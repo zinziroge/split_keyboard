@@ -1,0 +1,1282 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L kbd:SW_PUSH SW3
+U 1 1 5FA00469
+P 2800 3550
+F 0 "SW3" H 2800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 2800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 2800 3550 50  0001 C CNN
+F 3 "" H 2800 3550 50  0000 C CNN
+	1    2800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW1
+U 1 1 5FA11F14
+P 1800 3550
+F 0 "SW1" H 1800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 1800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 1800 3550 50  0001 C CNN
+F 3 "" H 1800 3550 50  0000 C CNN
+	1    1800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW2
+U 1 1 5FA13EE2
+P 1800 4250
+F 0 "SW2" H 1800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 1800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 1800 4250 50  0001 C CNN
+F 3 "" H 1800 4250 50  0000 C CNN
+	1    1800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW4
+U 1 1 5FA144C8
+P 2800 4250
+F 0 "SW4" H 2800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 2800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 2800 4250 50  0001 C CNN
+F 3 "" H 2800 4250 50  0000 C CNN
+	1    2800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D1
+U 1 1 5FA16438
+P 2100 3700
+F 0 "D1" V 2146 3620 50  0000 R CNN
+F 1 "1N4148" V 2055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 2100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 2100 3700 50  0001 C CNN
+	1    2100 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D3
+U 1 1 5FA180B0
+P 3100 3700
+F 0 "D3" V 3146 3620 50  0000 R CNN
+F 1 "1N4148" V 3055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3100 3700 50  0001 C CNN
+	1    3100 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D2
+U 1 1 5FA18ED2
+P 2100 4400
+F 0 "D2" V 2146 4320 50  0000 R CNN
+F 1 "1N4148" V 2055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 2100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 2100 4400 50  0001 C CNN
+	1    2100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D4
+U 1 1 5FA196AB
+P 3100 4400
+F 0 "D4" V 3146 4320 50  0000 R CNN
+F 1 "1N4148" V 3055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3100 4400 50  0001 C CNN
+	1    3100 4400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1000 3850 2100 3850
+Connection ~ 2100 3850
+Wire Wire Line
+	2100 3850 3100 3850
+Connection ~ 3100 3850
+Wire Wire Line
+	1500 3150 1500 3550
+Connection ~ 1500 3550
+Wire Wire Line
+	1500 3550 1500 4250
+Connection ~ 1500 4250
+Wire Wire Line
+	1000 4550 2100 4550
+Connection ~ 2100 4550
+Wire Wire Line
+	2100 4550 3100 4550
+Connection ~ 3100 4550
+Wire Wire Line
+	2500 3150 2500 3550
+Connection ~ 2500 3550
+Wire Wire Line
+	2500 3550 2500 4250
+Connection ~ 2500 4250
+Text GLabel 1000 3850 0    50   Input ~ 0
+ROW_0
+Text GLabel 1000 4550 0    50   Input ~ 0
+ROW_1
+Text GLabel 1500 3150 1    50   Input ~ 0
+COL_0
+Text GLabel 2500 3150 1    50   Input ~ 0
+COL_1
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 5FA20E67
+P 1000 900
+F 0 "#FLG01" H 1000 975 50  0001 C CNN
+F 1 "PWR_FLAG" H 1000 1073 50  0000 C CNN
+F 2 "" H 1000 900 50  0001 C CNN
+F 3 "~" H 1000 900 50  0001 C CNN
+	1    1000 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 5FA2132E
+P 1300 1000
+F 0 "#FLG02" H 1300 1075 50  0001 C CNN
+F 1 "PWR_FLAG" H 1300 1173 50  0000 C CNN
+F 2 "" H 1300 1000 50  0001 C CNN
+F 3 "~" H 1300 1000 50  0001 C CNN
+	1    1300 1000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1000 900  1000 1000
+Wire Wire Line
+	1300 1000 1300 900 
+$Comp
+L keyboard_parts:GND #PWR01
+U 1 1 5FA2289E
+P 1000 1000
+F 0 "#PWR01" H 1000 1050 20  0001 C CNN
+F 1 "GND" H 1000 1059 30  0000 C CNN
+F 2 "" H 1000 1000 60  0000 C CNN
+F 3 "" H 1000 1000 60  0000 C CNN
+	1    1000 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR02
+U 1 1 5FA22DAF
+P 1300 900
+F 0 "#PWR02" H 1300 750 50  0001 C CNN
+F 1 "VCC" H 1315 1073 50  0000 C CNN
+F 2 "" H 1300 900 50  0001 C CNN
+F 3 "" H 1300 900 50  0001 C CNN
+	1    1300 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L esp32_devkitc_32d:ESP32-DEVKITC-32D U1
+U 1 1 5FA5FCC2
+P 9300 1700
+F 0 "U1" H 9300 2867 50  0000 C CNN
+F 1 "ESP32-DEVKITC-32D" H 9300 2776 50  0000 C CNN
+F 2 "ESP32-DEVKITC-32D:MODULE_ESP32-DEVKITC-32D" H 9300 1700 50  0001 L BNN
+F 3 "" H 9300 1700 50  0001 L BNN
+F 4 "Espressif Systems" H 9300 1700 50  0001 L BNN "MANUFACTURER"
+F 5 "4" H 9300 1700 50  0001 L BNN "PARTREV"
+	1    9300 1700
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10100 1100
+NoConn ~ 10100 1200
+Text GLabel 8500 1200 0    50   Input ~ 0
+ROW_1
+Text GLabel 8500 1300 0    50   Input ~ 0
+ROW_0
+Text GLabel 8500 1000 0    50   Input ~ 0
+ROW_3
+Text GLabel 8500 1100 0    50   Input ~ 0
+ROW_2
+NoConn ~ 8500 2600
+NoConn ~ 8500 2400
+NoConn ~ 8500 2300
+NoConn ~ 10100 2500
+NoConn ~ 10100 2400
+NoConn ~ 10100 2600
+NoConn ~ 10100 2100
+NoConn ~ 8500 900 
+Text GLabel 10100 900  2    50   Input ~ 0
+COL_8
+Text GLabel 10100 1000 2    50   Input ~ 0
+COL_7
+Text GLabel 10100 1300 2    50   Input ~ 0
+COL_6
+Text GLabel 10100 1500 2    50   Input ~ 0
+COL_5
+Text GLabel 10100 1600 2    50   Input ~ 0
+COL_4
+Text GLabel 10100 1700 2    50   Input ~ 0
+COL_3
+Text GLabel 10100 1800 2    50   Input ~ 0
+COL_2
+Text GLabel 10100 1900 2    50   Input ~ 0
+COL_1
+Text GLabel 10100 2000 2    50   Input ~ 0
+COL_0
+Text GLabel 8500 1400 0    50   Input ~ 0
+ROW_4
+Text GLabel 8500 1500 0    50   Input ~ 0
+ROW_5
+Text GLabel 8500 1600 0    50   Input ~ 0
+ROW_6
+Text GLabel 8500 1700 0    50   Input ~ 0
+ROW_7
+Text GLabel 8500 1800 0    50   Input ~ 0
+ROW_8
+$Comp
+L kbd:SW_PUSH SW9
+U 1 1 5FA6C3F1
+P 3800 3550
+F 0 "SW9" H 3800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 3800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 3800 3550 50  0001 C CNN
+F 3 "" H 3800 3550 50  0000 C CNN
+	1    3800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW13
+U 1 1 5FA6CB8B
+P 4800 3550
+F 0 "SW13" H 4800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 4800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 4800 3550 50  0001 C CNN
+F 3 "" H 4800 3550 50  0000 C CNN
+	1    4800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW17
+U 1 1 5FA6D09F
+P 5800 3550
+F 0 "SW17" H 5800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 5800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 5800 3550 50  0001 C CNN
+F 3 "" H 5800 3550 50  0000 C CNN
+	1    5800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW21
+U 1 1 5FA6D57B
+P 6800 3550
+F 0 "SW21" H 6800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 6800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 6800 3550 50  0001 C CNN
+F 3 "" H 6800 3550 50  0000 C CNN
+	1    6800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW25
+U 1 1 5FA6DAD7
+P 7800 3550
+F 0 "SW25" H 7800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 7800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 7800 3550 50  0001 C CNN
+F 3 "" H 7800 3550 50  0000 C CNN
+	1    7800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW5
+U 1 1 5FA6DE7C
+P 1800 5100
+F 0 "SW5" H 1800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 1800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 1800 5100 50  0001 C CNN
+F 3 "" H 1800 5100 50  0000 C CNN
+	1    1800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW6
+U 1 1 5FA6E7C2
+P 1800 5750
+F 0 "SW6" H 1800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 1800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 1800 5750 50  0001 C CNN
+F 3 "" H 1800 5750 50  0000 C CNN
+	1    1800 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 3850 4100 3850
+$Comp
+L Diode:1N4148 D5
+U 1 1 5FA709E6
+P 2100 5250
+F 0 "D5" V 2146 5170 50  0000 R CNN
+F 1 "1N4148" V 2055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 2100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 2100 5250 50  0001 C CNN
+	1    2100 5250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW7
+U 1 1 5FA82235
+P 2800 5100
+F 0 "SW7" H 2800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 2800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 2800 5100 50  0001 C CNN
+F 3 "" H 2800 5100 50  0000 C CNN
+	1    2800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D7
+U 1 1 5FA8223B
+P 3100 5250
+F 0 "D7" V 3146 5170 50  0000 R CNN
+F 1 "1N4148" V 3055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3100 5250 50  0001 C CNN
+	1    3100 5250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2100 5400 3100 5400
+Connection ~ 3100 5400
+Connection ~ 2500 5100
+$Comp
+L kbd:SW_PUSH SW11
+U 1 1 5FA82246
+P 3800 5100
+F 0 "SW11" H 3800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 3800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 3800 5100 50  0001 C CNN
+F 3 "" H 3800 5100 50  0000 C CNN
+	1    3800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW15
+U 1 1 5FA8224C
+P 4800 5100
+F 0 "SW15" H 4800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 4800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 4800 5100 50  0001 C CNN
+F 3 "" H 4800 5100 50  0000 C CNN
+	1    4800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW19
+U 1 1 5FA82252
+P 5800 5100
+F 0 "SW19" H 5800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 5800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 5800 5100 50  0001 C CNN
+F 3 "" H 5800 5100 50  0000 C CNN
+	1    5800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW23
+U 1 1 5FA82258
+P 6800 5100
+F 0 "SW23" H 6800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 6800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 6800 5100 50  0001 C CNN
+F 3 "" H 6800 5100 50  0000 C CNN
+	1    6800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW27
+U 1 1 5FA8225E
+P 7800 5100
+F 0 "SW27" H 7800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 7800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 7800 5100 50  0001 C CNN
+F 3 "" H 7800 5100 50  0000 C CNN
+	1    7800 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 5400 4100 5400
+Wire Wire Line
+	2500 4250 2500 5100
+$Comp
+L kbd:SW_PUSH SW8
+U 1 1 5FA881A4
+P 2800 5750
+F 0 "SW8" H 2800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 2800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 2800 5750 50  0001 C CNN
+F 3 "" H 2800 5750 50  0000 C CNN
+	1    2800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D8
+U 1 1 5FA881AA
+P 3100 5900
+F 0 "D8" V 3146 5820 50  0000 R CNN
+F 1 "1N4148" V 3055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3100 5900 50  0001 C CNN
+	1    3100 5900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2100 6050 3100 6050
+Connection ~ 3100 6050
+Connection ~ 2500 5750
+$Comp
+L kbd:SW_PUSH SW12
+U 1 1 5FA881B5
+P 3800 5750
+F 0 "SW12" H 3800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 3800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 3800 5750 50  0001 C CNN
+F 3 "" H 3800 5750 50  0000 C CNN
+	1    3800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW16
+U 1 1 5FA881BB
+P 4800 5750
+F 0 "SW16" H 4800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 4800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 4800 5750 50  0001 C CNN
+F 3 "" H 4800 5750 50  0000 C CNN
+	1    4800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW20
+U 1 1 5FA881C1
+P 5800 5750
+F 0 "SW20" H 5800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 5800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 5800 5750 50  0001 C CNN
+F 3 "" H 5800 5750 50  0000 C CNN
+	1    5800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW24
+U 1 1 5FA881C7
+P 6800 5750
+F 0 "SW24" H 6800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 6800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 6800 5750 50  0001 C CNN
+F 3 "" H 6800 5750 50  0000 C CNN
+	1    6800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW28
+U 1 1 5FA881CD
+P 7800 5750
+F 0 "SW28" H 7800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 7800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 7800 5750 50  0001 C CNN
+F 3 "" H 7800 5750 50  0000 C CNN
+	1    7800 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 6050 4100 6050
+$Comp
+L kbd:SW_PUSH SW10
+U 1 1 5FA8B6F1
+P 3800 4250
+F 0 "SW10" H 3800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 3800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 3800 4250 50  0001 C CNN
+F 3 "" H 3800 4250 50  0000 C CNN
+	1    3800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D10
+U 1 1 5FA8B6F7
+P 4100 4400
+F 0 "D10" V 4146 4320 50  0000 R CNN
+F 1 "1N4148" V 4055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 4100 4400 50  0001 C CNN
+	1    4100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L kbd:SW_PUSH SW14
+U 1 1 5FA8B702
+P 4800 4250
+F 0 "SW14" H 4800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 4800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 4800 4250 50  0001 C CNN
+F 3 "" H 4800 4250 50  0000 C CNN
+	1    4800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW18
+U 1 1 5FA8B708
+P 5800 4250
+F 0 "SW18" H 5800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 5800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 5800 4250 50  0001 C CNN
+F 3 "" H 5800 4250 50  0000 C CNN
+	1    5800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW22
+U 1 1 5FA8B70E
+P 6800 4250
+F 0 "SW22" H 6800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 6800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 6800 4250 50  0001 C CNN
+F 3 "" H 6800 4250 50  0000 C CNN
+	1    6800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW26
+U 1 1 5FA8B714
+P 7800 4250
+F 0 "SW26" H 7800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 7800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 7800 4250 50  0001 C CNN
+F 3 "" H 7800 4250 50  0000 C CNN
+	1    7800 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 4550 4100 4550
+$Comp
+L Diode:1N4148 D9
+U 1 1 5FA8DA6E
+P 4100 3700
+F 0 "D9" V 4146 3620 50  0000 R CNN
+F 1 "1N4148" V 4055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 4100 3700 50  0001 C CNN
+	1    4100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 4100 3850
+Wire Wire Line
+	4100 3850 5100 3850
+$Comp
+L Diode:1N4148 D13
+U 1 1 5FA8E565
+P 5100 3700
+F 0 "D13" V 5146 3620 50  0000 R CNN
+F 1 "1N4148" V 5055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 5100 3700 50  0001 C CNN
+	1    5100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 5100 3850
+Wire Wire Line
+	5100 3850 6100 3850
+$Comp
+L Diode:1N4148 D17
+U 1 1 5FA90795
+P 6100 3700
+F 0 "D17" V 6146 3620 50  0000 R CNN
+F 1 "1N4148" V 6055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 6100 3700 50  0001 C CNN
+	1    6100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 6100 3850
+Wire Wire Line
+	6100 3850 7100 3850
+$Comp
+L Diode:1N4148 D21
+U 1 1 5FA914EB
+P 7100 3700
+F 0 "D21" V 7146 3620 50  0000 R CNN
+F 1 "1N4148" V 7055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7100 3700 50  0001 C CNN
+	1    7100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7100 3850
+Wire Wire Line
+	7100 3850 8100 3850
+$Comp
+L Diode:1N4148 D25
+U 1 1 5FA91DFC
+P 8100 3700
+F 0 "D25" V 8146 3620 50  0000 R CNN
+F 1 "1N4148" V 8055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8100 3700 50  0001 C CNN
+	1    8100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 8100 3850
+$Comp
+L Diode:1N4148 D26
+U 1 1 5FA93222
+P 8100 4400
+F 0 "D26" V 8146 4320 50  0000 R CNN
+F 1 "1N4148" V 8055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8100 4400 50  0001 C CNN
+	1    8100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D22
+U 1 1 5FA93B79
+P 7100 4400
+F 0 "D22" V 7146 4320 50  0000 R CNN
+F 1 "1N4148" V 7055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7100 4400 50  0001 C CNN
+	1    7100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D18
+U 1 1 5FA947B0
+P 6100 4400
+F 0 "D18" V 6146 4320 50  0000 R CNN
+F 1 "1N4148" V 6055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 6100 4400 50  0001 C CNN
+	1    6100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D14
+U 1 1 5FA94FA7
+P 5100 4400
+F 0 "D14" V 5146 4320 50  0000 R CNN
+F 1 "1N4148" V 5055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 5100 4400 50  0001 C CNN
+	1    5100 4400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4100 4550 5100 4550
+Connection ~ 4100 4550
+Connection ~ 5100 4550
+Wire Wire Line
+	5100 4550 6100 4550
+Connection ~ 6100 4550
+Wire Wire Line
+	6100 4550 7100 4550
+Connection ~ 7100 4550
+Wire Wire Line
+	7100 4550 8100 4550
+Connection ~ 8100 4550
+Wire Wire Line
+	3500 4250 3500 5100
+Connection ~ 3500 5100
+Wire Wire Line
+	3500 5100 3500 5750
+Connection ~ 3500 5750
+Wire Wire Line
+	3500 5750 3500 6450
+Connection ~ 3500 3550
+Wire Wire Line
+	3500 3550 3500 3150
+Wire Wire Line
+	4500 3150 4500 3550
+Connection ~ 4500 3550
+Wire Wire Line
+	4500 3550 4500 4250
+Connection ~ 4500 4250
+Wire Wire Line
+	4500 4250 4500 5100
+Connection ~ 4500 5100
+Wire Wire Line
+	4500 5100 4500 5750
+Connection ~ 4500 5750
+Wire Wire Line
+	4500 5750 4500 6450
+Wire Wire Line
+	5500 6450 5500 5750
+Connection ~ 5500 3550
+Wire Wire Line
+	5500 3550 5500 3150
+Connection ~ 5500 4250
+Wire Wire Line
+	5500 4250 5500 3550
+Connection ~ 5500 5100
+Wire Wire Line
+	5500 5100 5500 4250
+Connection ~ 5500 5750
+Wire Wire Line
+	5500 5750 5500 5100
+Wire Wire Line
+	6500 3150 6500 3550
+Connection ~ 6500 3550
+Wire Wire Line
+	6500 3550 6500 4250
+Connection ~ 6500 4250
+Wire Wire Line
+	6500 4250 6500 5100
+Connection ~ 6500 5100
+Wire Wire Line
+	6500 5100 6500 5750
+Connection ~ 6500 5750
+Wire Wire Line
+	6500 5750 6500 6450
+Wire Wire Line
+	7500 6400 7500 5750
+Connection ~ 7500 3550
+Wire Wire Line
+	7500 3550 7500 3150
+Connection ~ 7500 4250
+Wire Wire Line
+	7500 4250 7500 3550
+Connection ~ 7500 5100
+Wire Wire Line
+	7500 5100 7500 4250
+Connection ~ 7500 5750
+Wire Wire Line
+	7500 5750 7500 5100
+$Comp
+L Diode:1N4148 D6
+U 1 1 5FA9E28A
+P 2100 5900
+F 0 "D6" V 2146 5820 50  0000 R CNN
+F 1 "1N4148" V 2055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 2100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 2100 5900 50  0001 C CNN
+	1    2100 5900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1500 4250 1500 5100
+Connection ~ 1500 5100
+Wire Wire Line
+	1500 5100 1500 5750
+Connection ~ 1500 5750
+Wire Wire Line
+	1500 5750 1500 6450
+Wire Wire Line
+	2100 6050 1000 6050
+Connection ~ 2100 6050
+Wire Wire Line
+	2100 5400 1000 5400
+Connection ~ 2100 5400
+Text GLabel 1000 5400 0    50   Input ~ 0
+ROW_2
+Text GLabel 1000 6050 0    50   Input ~ 0
+ROW_3
+$Comp
+L Diode:1N4148 D11
+U 1 1 5FAA6C78
+P 4100 5250
+F 0 "D11" V 4146 5170 50  0000 R CNN
+F 1 "1N4148" V 4055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 4100 5250 50  0001 C CNN
+	1    4100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 4100 5400
+Wire Wire Line
+	4100 5400 5100 5400
+$Comp
+L Diode:1N4148 D15
+U 1 1 5FAA7869
+P 5100 5250
+F 0 "D15" V 5146 5170 50  0000 R CNN
+F 1 "1N4148" V 5055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 5100 5250 50  0001 C CNN
+	1    5100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 5100 5400
+Wire Wire Line
+	5100 5400 6100 5400
+$Comp
+L Diode:1N4148 D19
+U 1 1 5FAA7E90
+P 6100 5250
+F 0 "D19" V 6146 5170 50  0000 R CNN
+F 1 "1N4148" V 6055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 6100 5250 50  0001 C CNN
+	1    6100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 6100 5400
+Wire Wire Line
+	6100 5400 7100 5400
+$Comp
+L Diode:1N4148 D23
+U 1 1 5FAA85C0
+P 7100 5250
+F 0 "D23" V 7146 5170 50  0000 R CNN
+F 1 "1N4148" V 7055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7100 5250 50  0001 C CNN
+	1    7100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7100 5400
+Wire Wire Line
+	7100 5400 8100 5400
+$Comp
+L Diode:1N4148 D27
+U 1 1 5FAA8CB2
+P 8100 5250
+F 0 "D27" V 8146 5170 50  0000 R CNN
+F 1 "1N4148" V 8055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8100 5250 50  0001 C CNN
+	1    8100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 8100 5400
+$Comp
+L Diode:1N4148 D28
+U 1 1 5FAA9459
+P 8100 5900
+F 0 "D28" V 8146 5820 50  0000 R CNN
+F 1 "1N4148" V 8055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8100 5900 50  0001 C CNN
+	1    8100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 8100 6050
+$Comp
+L Diode:1N4148 D24
+U 1 1 5FAAAD5A
+P 7100 5900
+F 0 "D24" V 7146 5820 50  0000 R CNN
+F 1 "1N4148" V 7055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7100 5900 50  0001 C CNN
+	1    7100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7100 6050
+Wire Wire Line
+	7100 6050 8100 6050
+$Comp
+L Diode:1N4148 D20
+U 1 1 5FAAB7E6
+P 6100 5900
+F 0 "D20" V 6146 5820 50  0000 R CNN
+F 1 "1N4148" V 6055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 6100 5900 50  0001 C CNN
+	1    6100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 6100 6050
+Wire Wire Line
+	6100 6050 7100 6050
+$Comp
+L Diode:1N4148 D16
+U 1 1 5FAABE5C
+P 5100 5900
+F 0 "D16" V 5146 5820 50  0000 R CNN
+F 1 "1N4148" V 5055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 5100 5900 50  0001 C CNN
+	1    5100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 5100 6050
+Wire Wire Line
+	5100 6050 6100 6050
+$Comp
+L Diode:1N4148 D12
+U 1 1 5FAAC5E0
+P 4100 5900
+F 0 "D12" V 4146 5820 50  0000 R CNN
+F 1 "1N4148" V 4055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 4100 5900 50  0001 C CNN
+	1    4100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 4100 6050
+Wire Wire Line
+	4100 6050 5100 6050
+Text GLabel 3500 3150 1    50   Input ~ 0
+COL_2
+Text GLabel 4500 3150 1    50   Input ~ 0
+COL_3
+Text GLabel 5500 3150 1    50   Input ~ 0
+COL_4
+Text GLabel 6500 3150 1    50   Input ~ 0
+COL_5
+Text GLabel 7500 3150 1    50   Input ~ 0
+COL_6
+Wire Wire Line
+	2500 5750 2500 6450
+$Comp
+L kbd:SW_PUSH SW29
+U 1 1 5FAE30D7
+P 8800 3550
+F 0 "SW29" H 8800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 8800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 8800 3550 50  0001 C CNN
+F 3 "" H 8800 3550 50  0000 C CNN
+	1    8800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW33
+U 1 1 5FAE30DD
+P 9800 3550
+F 0 "SW33" H 9800 3805 50  0000 C CNN
+F 1 "SW_PUSH" H 9800 3714 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 9800 3550 50  0001 C CNN
+F 3 "" H 9800 3550 50  0000 C CNN
+	1    9800 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW31
+U 1 1 5FAE30E3
+P 8800 5100
+F 0 "SW31" H 8800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 8800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 8800 5100 50  0001 C CNN
+F 3 "" H 8800 5100 50  0000 C CNN
+	1    8800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW35
+U 1 1 5FAE30E9
+P 9800 5100
+F 0 "SW35" H 9800 5355 50  0000 C CNN
+F 1 "SW_PUSH" H 9800 5264 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 9800 5100 50  0001 C CNN
+F 3 "" H 9800 5100 50  0000 C CNN
+	1    9800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW32
+U 1 1 5FAE30EF
+P 8800 5750
+F 0 "SW32" H 8800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 8800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 8800 5750 50  0001 C CNN
+F 3 "" H 8800 5750 50  0000 C CNN
+	1    8800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW36
+U 1 1 5FAE30F5
+P 9800 5750
+F 0 "SW36" H 9800 6005 50  0000 C CNN
+F 1 "SW_PUSH" H 9800 5914 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 9800 5750 50  0001 C CNN
+F 3 "" H 9800 5750 50  0000 C CNN
+	1    9800 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW30
+U 1 1 5FAE30FB
+P 8800 4250
+F 0 "SW30" H 8800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 8800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 8800 4250 50  0001 C CNN
+F 3 "" H 8800 4250 50  0000 C CNN
+	1    8800 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L kbd:SW_PUSH SW34
+U 1 1 5FAE3101
+P 9800 4250
+F 0 "SW34" H 9800 4505 50  0000 C CNN
+F 1 "SW_PUSH" H 9800 4414 50  0000 C CNN
+F 2 "kbd:CherryMX_1u" H 9800 4250 50  0001 C CNN
+F 3 "" H 9800 4250 50  0000 C CNN
+	1    9800 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 3850 9100 3850
+$Comp
+L Diode:1N4148 D29
+U 1 1 5FAE3108
+P 9100 3700
+F 0 "D29" V 9146 3620 50  0000 R CNN
+F 1 "1N4148" V 9055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9100 3700 50  0001 C CNN
+	1    9100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 9100 3850
+Wire Wire Line
+	9100 3850 10100 3850
+$Comp
+L Diode:1N4148 D33
+U 1 1 5FAE3110
+P 10100 3700
+F 0 "D33" V 10146 3620 50  0000 R CNN
+F 1 "1N4148" V 10055 3620 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10100 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10100 3700 50  0001 C CNN
+	1    10100 3700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 10100 3850
+Wire Wire Line
+	10100 3850 10350 3850
+$Comp
+L Diode:1N4148 D34
+U 1 1 5FAE3118
+P 10100 4400
+F 0 "D34" V 10146 4320 50  0000 R CNN
+F 1 "1N4148" V 10055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10100 4400 50  0001 C CNN
+	1    10100 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D30
+U 1 1 5FAE311E
+P 9100 4400
+F 0 "D30" V 9146 4320 50  0000 R CNN
+F 1 "1N4148" V 9055 4320 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9100 4225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9100 4400 50  0001 C CNN
+	1    9100 4400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8100 4550 9100 4550
+Connection ~ 9100 4550
+Wire Wire Line
+	9100 4550 10100 4550
+Connection ~ 10100 4550
+Wire Wire Line
+	10100 4550 10350 4550
+Wire Wire Line
+	8500 3150 8500 3550
+Connection ~ 8500 3550
+Wire Wire Line
+	8500 3550 8500 4250
+Connection ~ 8500 4250
+Wire Wire Line
+	8500 4250 8500 5100
+Connection ~ 8500 5100
+Wire Wire Line
+	8500 5100 8500 5750
+Connection ~ 8500 5750
+Wire Wire Line
+	8500 5750 8500 6450
+Wire Wire Line
+	9500 6400 9500 5750
+Connection ~ 9500 3550
+Wire Wire Line
+	9500 3550 9500 3150
+Connection ~ 9500 4250
+Wire Wire Line
+	9500 4250 9500 3550
+Connection ~ 9500 5100
+Wire Wire Line
+	9500 5100 9500 4250
+Connection ~ 9500 5750
+Wire Wire Line
+	9500 5750 9500 5100
+Wire Wire Line
+	8100 5400 9100 5400
+$Comp
+L Diode:1N4148 D31
+U 1 1 5FAE313C
+P 9100 5250
+F 0 "D31" V 9146 5170 50  0000 R CNN
+F 1 "1N4148" V 9055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9100 5250 50  0001 C CNN
+	1    9100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 9100 5400
+Wire Wire Line
+	9100 5400 10100 5400
+$Comp
+L Diode:1N4148 D35
+U 1 1 5FAE3144
+P 10100 5250
+F 0 "D35" V 10146 5170 50  0000 R CNN
+F 1 "1N4148" V 10055 5170 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10100 5075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10100 5250 50  0001 C CNN
+	1    10100 5250
+	0    -1   -1   0   
+$EndComp
+Connection ~ 10100 5400
+Wire Wire Line
+	10100 5400 10350 5400
+$Comp
+L Diode:1N4148 D36
+U 1 1 5FAE314C
+P 10100 5900
+F 0 "D36" V 10146 5820 50  0000 R CNN
+F 1 "1N4148" V 10055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10100 5900 50  0001 C CNN
+	1    10100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 10100 6050
+Wire Wire Line
+	10100 6050 10350 6050
+$Comp
+L Diode:1N4148 D32
+U 1 1 5FAE3154
+P 9100 5900
+F 0 "D32" V 9146 5820 50  0000 R CNN
+F 1 "1N4148" V 9055 5820 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9100 5725 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9100 5900 50  0001 C CNN
+	1    9100 5900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 9100 6050
+Wire Wire Line
+	9100 6050 10100 6050
+Wire Wire Line
+	8100 6050 9100 6050
+Text GLabel 8500 3150 1    50   Input ~ 0
+COL_7
+Text GLabel 9500 3150 1    50   Input ~ 0
+COL_8
+Wire Wire Line
+	2500 5350 2500 5750
+Wire Wire Line
+	2500 5100 2500 5750
+Wire Wire Line
+	10100 800  10900 800 
+Wire Wire Line
+	10900 800  10900 1400
+Wire Wire Line
+	10100 1400 10900 1400
+Connection ~ 10900 1400
+Wire Wire Line
+	10900 1400 10900 2700
+$Comp
+L keyboard_parts:GND #PWR05
+U 1 1 5FAEEC67
+P 10900 2700
+F 0 "#PWR05" H 10900 2750 20  0001 C CNN
+F 1 "GND" H 10900 2759 30  0000 C CNN
+F 2 "" H 10900 2700 60  0000 C CNN
+F 3 "" H 10900 2700 60  0000 C CNN
+	1    10900 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L keyboard_parts:GND #PWR04
+U 1 1 5FAEF735
+P 8000 2700
+F 0 "#PWR04" H 8000 2750 20  0001 C CNN
+F 1 "GND" H 8000 2759 30  0000 C CNN
+F 2 "" H 8000 2700 60  0000 C CNN
+F 3 "" H 8000 2700 60  0000 C CNN
+	1    8000 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 2100 8000 2100
+Wire Wire Line
+	8000 2100 8000 2700
+Wire Wire Line
+	8500 800  8000 800 
+Wire Wire Line
+	8000 800  8000 700 
+$Comp
+L power:VCC #PWR03
+U 1 1 5FAF706B
+P 8000 700
+F 0 "#PWR03" H 8000 550 50  0001 C CNN
+F 1 "VCC" H 8015 873 50  0000 C CNN
+F 2 "" H 8000 700 50  0001 C CNN
+F 3 "" H 8000 700 50  0001 C CNN
+	1    8000 700 
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10100 2200
+NoConn ~ 10100 2300
+NoConn ~ 8500 1900
+NoConn ~ 8500 2000
+Wire Wire Line
+	3500 3550 3500 4250
+Connection ~ 3500 4250
+$Comp
+L Connector_Generic:Conn_02x08_Odd_Even J1
+U 1 1 5FE5E290
+P 3900 1100
+F 0 "J1" H 3950 1617 50  0000 C CNN
+F 1 "Conn_02x08_Odd_Even" H 3950 1526 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x08_P2.54mm_Horizontal" H 3900 1100 50  0001 C CNN
+F 3 "~" H 3900 1100 50  0001 C CNN
+	1    3900 1100
+	1    0    0    -1  
+$EndComp
+Text GLabel 3700 800  0    50   Input ~ 0
+VCC
+Text GLabel 4200 1500 2    50   Input ~ 0
+GND
+Text GLabel 4200 800  2    50   Input ~ 0
+ROW_4
+Text GLabel 4200 900  2    50   Input ~ 0
+ROW_5
+Text GLabel 4200 1000 2    50   Input ~ 0
+ROW_6
+Text GLabel 4200 1100 2    50   Input ~ 0
+ROW_7
+Text GLabel 4200 1200 2    50   Input ~ 0
+ROW_8
+Text GLabel 4200 1300 2    50   Input ~ 0
+COL_8
+Text GLabel 4200 1400 2    50   Input ~ 0
+COL_7
+Text GLabel 3700 1500 0    50   Input ~ 0
+COL_0
+Text GLabel 3700 900  0    50   Input ~ 0
+COL_6
+Text GLabel 3700 1000 0    50   Input ~ 0
+COL_5
+Text GLabel 3700 1100 0    50   Input ~ 0
+COL_4
+Text GLabel 3700 1200 0    50   Input ~ 0
+COL_3
+Text GLabel 3700 1300 0    50   Input ~ 0
+COL_2
+Text GLabel 3700 1400 0    50   Input ~ 0
+COL_1
+$EndSCHEMATC
