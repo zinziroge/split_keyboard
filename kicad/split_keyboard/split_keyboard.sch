@@ -196,13 +196,13 @@ F 5 "4" H 9300 1700 50  0001 L BNN "PARTREV"
 $EndComp
 NoConn ~ 10100 1100
 NoConn ~ 10100 1200
-Text GLabel 8500 1200 0    50   Input ~ 0
+Text GLabel 7500 1200 0    50   Input ~ 0
 ROW_1
-Text GLabel 8500 1300 0    50   Input ~ 0
+Text GLabel 7500 1300 0    50   Input ~ 0
 ROW_0
-Text GLabel 8500 1000 0    50   Input ~ 0
+Text GLabel 8300 1000 1    50   Input ~ 0
 ROW_3
-Text GLabel 8500 1100 0    50   Input ~ 0
+Text GLabel 7500 1100 0    50   Input ~ 0
 ROW_2
 NoConn ~ 8500 2600
 NoConn ~ 8500 2400
@@ -1214,19 +1214,15 @@ Wire Wire Line
 	8500 2100 8000 2100
 Wire Wire Line
 	8000 2100 8000 2700
-Wire Wire Line
-	8500 800  8000 800 
-Wire Wire Line
-	8000 800  8000 700 
 $Comp
 L power:VCC #PWR03
 U 1 1 5FAF706B
-P 8000 700
-F 0 "#PWR03" H 8000 550 50  0001 C CNN
-F 1 "VCC" H 8015 873 50  0000 C CNN
-F 2 "" H 8000 700 50  0001 C CNN
-F 3 "" H 8000 700 50  0001 C CNN
-	1    8000 700 
+P 8000 600
+F 0 "#PWR03" H 8000 450 50  0001 C CNN
+F 1 "VCC" H 8015 773 50  0000 C CNN
+F 2 "" H 8000 600 50  0001 C CNN
+F 3 "" H 8000 600 50  0001 C CNN
+	1    8000 600 
 	1    0    0    -1  
 $EndComp
 NoConn ~ 10100 2200
@@ -1279,4 +1275,89 @@ Text GLabel 3700 1300 0    50   Input ~ 0
 COL_2
 Text GLabel 3700 1400 0    50   Input ~ 0
 COL_1
+Wire Wire Line
+	7500 1100 7900 1100
+Wire Wire Line
+	8500 1200 7800 1200
+Wire Wire Line
+	7500 1300 7700 1300
+$Comp
+L Device:R R3
+U 1 1 5FB0ECDA
+P 7900 950
+F 0 "R3" H 7970 996 50  0000 L CNN
+F 1 "R" H 7970 905 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7830 950 50  0001 C CNN
+F 3 "~" H 7900 950 50  0001 C CNN
+	1    7900 950 
+	1    0    0    -1  
+$EndComp
+Connection ~ 7900 1100
+Wire Wire Line
+	7900 1100 8500 1100
+$Comp
+L Device:R R2
+U 1 1 5FB11470
+P 7800 1050
+F 0 "R2" H 7870 1096 50  0000 L CNN
+F 1 "R" H 7870 1005 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7730 1050 50  0001 C CNN
+F 3 "~" H 7800 1050 50  0001 C CNN
+	1    7800 1050
+	1    0    0    -1  
+$EndComp
+Connection ~ 7800 1200
+Wire Wire Line
+	7800 1200 7500 1200
+$Comp
+L Device:R R1
+U 1 1 5FB12260
+P 7700 1150
+F 0 "R1" H 7770 1196 50  0000 L CNN
+F 1 "R" H 7770 1105 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7630 1150 50  0001 C CNN
+F 3 "~" H 7700 1150 50  0001 C CNN
+	1    7700 1150
+	1    0    0    -1  
+$EndComp
+Connection ~ 7700 1300
+Wire Wire Line
+	7700 1300 8500 1300
+$Comp
+L Device:R R4
+U 1 1 5FB15C79
+P 8000 850
+F 0 "R4" H 8070 896 50  0000 L CNN
+F 1 "R" H 8070 805 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7930 850 50  0001 C CNN
+F 3 "~" H 8000 850 50  0001 C CNN
+	1    8000 850 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 1000 8000 1000
+Wire Wire Line
+	8500 800  8500 700 
+Wire Wire Line
+	8500 700  8000 700 
+Connection ~ 8000 700 
+Wire Wire Line
+	8000 700  7900 700 
+Wire Wire Line
+	8000 700  8000 600 
+Wire Wire Line
+	7900 800  7900 700 
+Connection ~ 7900 700 
+Wire Wire Line
+	7900 700  7800 700 
+Wire Wire Line
+	7800 900  7800 700 
+Connection ~ 7800 700 
+Wire Wire Line
+	7800 700  7700 700 
+Wire Wire Line
+	7700 1000 7700 700 
+Connection ~ 7700 700 
+Wire Wire Line
+	7700 700  7550 700 
 $EndSCHEMATC
