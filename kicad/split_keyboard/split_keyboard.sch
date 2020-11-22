@@ -1360,4 +1360,62 @@ Wire Wire Line
 Connection ~ 7700 700 
 Wire Wire Line
 	7700 700  7550 700 
+$Comp
+L Connector_Generic:Conn_01x04 J2
+U 1 1 5FABFB3C
+P 5500 1800
+F 0 "J2" H 5580 1792 50  0000 L CNN
+F 1 "Conn_01x04" H 5580 1701 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 5500 1800 50  0001 C CNN
+F 3 "~" H 5500 1800 50  0001 C CNN
+	1    5500 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x04 J3
+U 1 1 5FAC03DA
+P 6700 1800
+F 0 "J3" H 6780 1792 50  0000 L CNN
+F 1 "Conn_01x04" H 6780 1701 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 6700 1800 50  0001 C CNN
+F 3 "~" H 6700 1800 50  0001 C CNN
+	1    6700 1800
+	1    0    0    -1  
+$EndComp
+Text GLabel 5300 1800 0    50   Input ~ 0
+GND
+Text GLabel 6500 1800 0    50   Input ~ 0
+GND
+Text GLabel 6250 1900 0    50   Input ~ 0
+GND
+Text GLabel 5300 1900 0    50   Input ~ 0
+VCC
+Text GLabel 6250 2000 0    50   Input ~ 0
+VCC
+NoConn ~ 5300 1700
+NoConn ~ 6500 1700
+Wire Wire Line
+	6250 1900 6350 1900
+Wire Wire Line
+	6500 2000 6250 2000
+Wire Wire Line
+	6350 2300 6350 1900
+Connection ~ 6350 1900
+Wire Wire Line
+	6350 1900 6500 1900
+Wire Wire Line
+	6500 2300 6350 2300
+Connection ~ 6500 2000
+$Comp
+L Device:CP C1
+U 1 1 5FB4051F
+P 6500 2150
+F 0 "C1" H 6618 2196 50  0000 L CNN
+F 1 "CP" H 6618 2105 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal" H 6538 2000 50  0001 C CNN
+F 3 "~" H 6500 2150 50  0001 C CNN
+	1    6500 2150
+	1    0    0    -1  
+$EndComp
+Connection ~ 6500 2300
 $EndSCHEMATC
