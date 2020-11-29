@@ -27,9 +27,3 @@ int row_pins[] = {
     PIN_ROW_7,
     PIN_ROW_8,
 };
-
-enum layer_number {
-    _QWERTY = 0,
-    _LOWER, // shift
-    _RAISE, // function
-};
