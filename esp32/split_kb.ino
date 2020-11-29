@@ -1,67 +1,96 @@
+/*
+    key scan flow:
+      1. loop row, col
+      2. r,c -> keymaps[][r][c] -> qmk keycode -> blekb keycode
+*/
+#include <stdint.h>
+
 #include <BleKeyboard.h>
 #include <M5Stack.h>
 
+// keyboard
+#include "keysw.h"
+//#include "blekb2qmk.h"
+//#include "keymap_jp.h"
+
+
+// 
 BleKeyboard bleKeyboard;
+extern int col_pins[];
+extern int row_pins[];
+extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
 
-#define PIN_COL_0 4
-#define PIN_COL_1 16
-#define PIN_COL_2 17
-#define PIN_COL_3 5
-#define PIN_COL_4 18
-#define PIN_COL_5 19
-#define PIN_COL_6 21
-#define PIN_COL_7 22
-#define PIN_COL_8 23
-
-#define PIN_ROW_0 35
-#define PIN_ROW_1 34
-#define PIN_ROW_2 39
-#define PIN_ROW_3 36
-#define PIN_ROW_4 32
-#define PIN_ROW_5 33
-#define PIN_ROW_6 25
-#define PIN_ROW_7 26
-#define PIN_ROW_8 27
-
-int col_pins[] = {
-    PIN_COL_0,
-    PIN_COL_1,
-    PIN_COL_2,
-    PIN_COL_3,
-    PIN_COL_4,
-    PIN_COL_5,
-    PIN_COL_6,
-    PIN_COL_7,
-    PIN_COL_8,
-};
-int row_pins[] = {
-    PIN_ROW_0,
-    PIN_ROW_1,
-    PIN_ROW_2,
-    PIN_ROW_3,
-    PIN_ROW_4,
-    PIN_ROW_5,
-    PIN_ROW_6,
-    PIN_ROW_7,
-    PIN_ROW_8,
-};
-
+// 
 void setup(void)
 {
     int r, c;
-    for (c = 0; c < 9; c++) {
+    // cols
+    for (c = 0; c < MATRIX_COLS; c++) {
         pinMode(col_pins[c], OUTPUT);
-        digitalWrite(PIN_COL_0, HIGH);
+        digitalWrite(col_pins[c], HIGH);
     }
+    // rows
     for (r = 0; r < 4; r++) {
         pinMode(row_pins[r], INPUT); // pull up by external register.
     }
-    for (r = 4; r < 9; r++) {
+    for (r = 4; r < MATRIX_ROWS; r++) {
         pinMode(row_pins[r], INPUT_PULLUP); // pull up by internal register.
     }
 
+    // ble
+    bleKeyboard.begin();
+    bleKeyboard.releaseAll();
+
+    // serial for debug
     Serial.begin(115200);
     Serial.println("start serial.");
+}
+
+void loop(void)
+{
+    if (bleKeyboard.isConnected()) {
+        int c, r;
+        int sw_val;
+        char buf[128];
+
+        for (c = 0; c < MATRIX_COLS; c++) { // output
+            digitalWrite(col_pins[c], LOW);
+            delay(KEY_SCAN_WAIT_MS);
+            sw_val = digitalRead(row_pins[r]);
+            for (r = 0; r < MATRIX_ROWS; r++) { // input
+                if (sw_val == 0) {
+                    uint16_t keycode = keymaps[0][r][c];
+                    bleKeyboard.write(keycode);
+                    sprintf(buf, "(%d, %d)=%d", r, c, sw_val);
+                    Serial.println(buf);
+                }
+            }
+        }
+    }
+}
+
+#if 0
+void loop(void)
+{
+    int c, r;
+    int sw_val;
+    char buf[128];
+
+    for (c = 0; c < MATRIX_COLS; c++) { // output
+        digitalWrite(col_pins[c], LOW);
+        for (r = 0; r < MATRIX_ROWS; r++) { // input
+            delay(KEY_SCAN_DELAY_MS);
+            sw_val = digitalRead(row_pins[r]);
+            if (sw_val == 0) {
+                uint16_t keycode = keymaps[0][r][c];
+                bleKeyboard.press(keycode);
+                sprintf(buf, "(%d, %d)=%d,0x%02x",
+                    r, c, sw_val, keycode);
+                Serial.println(buf);
+            }
+        }
+        digitalWrite(col_pins[c], HIGH);
+    }
 }
 
 void loop_2(void)
@@ -71,23 +100,4 @@ void loop_2(void)
     digitalWrite(PIN_COL_0, HIGH);
     delay(3000);
 }
-
-void loop(void)
-{
-    int c, r;
-    int sw_val;
-    char buf[128];
-
-    for (c = 0; c < 9; c++) { // output
-        digitalWrite(col_pins[c], LOW);
-        for (r = 0; r < 4; r++) { // input
-            delay(1);
-            sw_val = digitalRead(row_pins[r]);
-            if (sw_val == 0) {
-                sprintf(buf, "(%d, %d)=%d", r, c, sw_val);
-                Serial.println(buf);
-            }
-        }
-        digitalWrite(col_pins[c], HIGH);
-    }
-}
+#endif
