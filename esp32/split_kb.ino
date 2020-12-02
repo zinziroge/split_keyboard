@@ -19,6 +19,7 @@ BleKeyboard bleKeyboard("skb81");
 extern int col_pins[];
 extern int row_pins[];
 extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
+char buf[128];
 
 // 
 void setup(void)
@@ -45,6 +46,13 @@ void setup(void)
     bleKeyboard.begin();
     Serial.println(bleKeyboard.isConnected());
     //bleKeyboard.releaseAll();
+    for(c=0; c < MATRIX_COLS; c++) {
+        for(r=0; r < MATRIX_ROWS; r++){
+            sprintf(buf, "(%d, %d)=0x%02x,",
+                r, c, keymaps[0][r][c]);
+            Serial.println(buf);
+        }
+    }
 }
 
 bool is_ascii(const uint16_t key)
@@ -64,7 +72,6 @@ void loop(void)
     //if (bleKeyboard.isConnected()) {
         int c, r;
         int sw_val;
-        char buf[128];
 
         for (c = 0; c < MATRIX_COLS; c++) { // output
             digitalWrite(col_pins[c], LOW);
