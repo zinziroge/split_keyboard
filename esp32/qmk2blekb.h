@@ -1,7 +1,7 @@
 #pragma once
 
 #include <BleKeyboard.h>
-#include "keymap_jp.h"
+//#include "keymap_jp.h"
 
 /* Punctuation */
 #define KC_ENT KC_ENTER
@@ -68,10 +68,11 @@
 #define KC_MHEN KC_INT5
 
 // keycode
-#define     KC_NO = 0x00,
-#define     KC_ROLL_OVER,
-#define     KC_POST_FAIL,
-#define     KC_UNDEFINED,
+// 0x00~0x7F
+#define     KC_NO           0x00
+#define     KC_ROLL_OVER    0x01
+#define     KC_POST_FAIL    0x02
+#define     KC_UNDEFINED    0x03
 
 #define     KC_A 'a' //,
 #define     KC_B 'b' //,
@@ -119,22 +120,53 @@
 #define     KC_LBRACKET     '['
 #define     KC_RBRACKET     ']'  // 0x30
 #define     KC_BSLASH       '\\'
-#define     KC_NONUS_HASH   '~' 
+#define     KC_NONUS_HASH   '~'
 #define     KC_SCOLON       ';'
 #define     KC_QUOTE        '\''
 #define     KC_GRAVE        '`'
 #define     KC_COMMA        ','
-#define     KC_DOT          '.' 
+#define     KC_DOT          '.'
 #define     KC_SLASH        '/'
-#define     KC_CAPSLOCK     KEY_CAPS_LOCK
 
-#define     KC_F1  KEY_F1 //= 0xC2;
+// modifier (0x80~0x87)
+                                        /* qmk  ->  blekeyboard */
+#define     KC_LCTRL  KEY_LEFT_CTRL     /* 0xE0 ->  0x80 */
+#define     KC_LSHIFT KEY_LEFT_SHIFT
+#define     KC_LALT   KEY_LEFT_ALT
+#define     KC_LGUI   KEY_LEFT_GUI
+#define     KC_RCTRL  KEY_RIGHT_CTRL
+#define     KC_RSHIFT KEY_RIGHT_SHIFT
+#define     KC_RALT   KEY_RIGHT_ALT
+#define     KC_RGUI   KEY_RIGHT_GUI
+
+#define     KC_FN 0x88
+
+// 0x90~0x9F, international
+#define KC_INT1 (0x87 + 0x09) // 0x90
+#define KC_INT2 (0x88 + 0x09)
+#define KC_INT3 (0x89 + 0x09)
+#define KC_INT4 (0x8a + 0x09)
+#define KC_INT5 (0x8b + 0x09)
+#define KC_INT6 (0x8c + 0x09)
+#define KC_INT7 (0x8d + 0x09)
+#define KC_INT8 (0x8e + 0x09)
+#define KC_INT9 (0x8f + 0x09)
+
+// 0xA0~0xAF
+
+// over 0xB0
+//#define     KC_BKSP KEY_BACKSPACE //= 0xB2;
+//#define     KC_BKSP KEY_TAB //= 0xB3;
+//#define     KC_BKSP KEY_RETURN //= 0xB0;
+//#define     KC_BKSP KEY_ESC //= 0xB1;
+#define     KC_CAPSLOCK     KEY_CAPS_LOCK // 0xC1 = 0x39 + 0x88
+#define     KC_F1  KEY_F1 //= 0xC2 =  0x3A + 88
 #define     KC_F2  KEY_F2 //= 0xC3;
 #define     KC_F3  KEY_F3 //= 0xC4;
 #define     KC_F4  KEY_F4 //= 0xC5;
 #define     KC_F5  KEY_F5 //= 0xC6;
 #define     KC_F6  KEY_F6 //= 0xC7;
-#define     KC_F7  KEY_F7 //= 0xC8;  // 0x40
+#define     KC_F7  KEY_F7 //= 0xC8 = 0x40 + 0x88
 #define     KC_F8  KEY_F8 //= 0xC9;
 #define     KC_F9  KEY_F9 //= 0xCA;
 #define     KC_F10 KEY_F10// = 0xCB;,
@@ -143,41 +175,23 @@
 //#define     KC_PSCREEN,
 //#define     KC_SCROLLLOCK,
 //#define     KC_PAUSE,
-#define     KC_INSERT KEY_INSERT = 0xD1;
+#define     KC_INSERT KEY_INSERT
 
-#define     KC_HOME         KEY_HOME// = 0xD2;
+#define     KC_HOME         KEY_HOME// = 0xD2 = 0x4A + 0x88
 #define     KC_PGUP         KEY_PAGE_UP// = 0xD3;
 #define     KC_DELETE       KEY_DELETE// = 0xD4;
 #define     KC_END          KEY_END// = 0xD5;,
 #define     KC_PGDOWN       KEY_PAGE_DOWN// = 0xD6;
 #define     KC_RIGHT        KEY_RIGHT_ARROW// = 0xD7;
-#define     KC_LEFT         KEY_LEFT_ARROW// = 0xD8;  // 0x50
+#define     KC_LEFT         KEY_LEFT_ARROW// = 0xD8 = 0x50 + 0x88
 #define     KC_DOWN         KEY_DOWN_ARROW// = 0xD9;
 #define     KC_UP           KEY_UP_ARROW// = 0xDA;
+#define     KC_NUMLOCK      (0x53 + 0x88) // 0xDB
 
-#define     KC_NUMLOCK      0x00
+// 0xDC~0xEF
 
-//#define     KC_KP_SLASH,
-//#define     KC_KP_ASTERISK,
-//#define     KC_KP_MINUS,
-//#define     KC_KP_PLUS,
-//#define     KC_KP_ENTER,
-//#define     KC_KP_1,
-//#define     KC_KP_2,
-//#define     KC_KP_3,
-//#define     KC_KP_4,
-//#define     KC_KP_5,
-//#define     KC_KP_6,
-//#define     KC_KP_7,
-//#define     KC_KP_8,  // 0x60
-//#define     KC_KP_9,
-//#define     KC_KP_0,
-//#define     KC_KP_DOT,
-//#define     KC_NONUS_BSLASH,
-//#define     KC_APPLICATION,
-//#define     KC_POWER,
-//#define     KC_KP_EQUAL,
-#define     KC_F13 KEY_F13 // = 0xF0;,
+// 0xF0~0xFB
+#define     KC_F13 KEY_F13 // = 0xF0 = 0x68 + 0x88
 #define     KC_F14 KEY_F14 // = 0xF1;,
 #define     KC_F15 KEY_F15 // = 0xF2;,
 #define     KC_F16 KEY_F16 // = 0xF3;,
@@ -185,86 +199,29 @@
 #define     KC_F18 KEY_F18 // = 0xF5;,
 #define     KC_F19 KEY_F19 // = 0xF6;,
 #define     KC_F20 KEY_F20 // = 0xF7;,
-#define     KC_F21 KEY_F21 // = 0xF8;,  // 0x70
+#define     KC_F21 KEY_F21 // = 0xF8 = 0x70 + 0x88
 #define     KC_F22 KEY_F22 // = 0xF9;,
 #define     KC_F23 KEY_F23 // = 0xFA;,
-#define     KC_F24 KEY_F24 // = 0xFB;,
-//#define     KC_EXECUTE,
-//#define     KC_HELP,
-//#define     KC_MENU,
-//#define     KC_SELECT,
-//#define     KC_STOP,
-//#define     KC_AGAIN,
-//#define     KC_UNDO,
-//#define     KC_CUT,
-//#define     KC_COPY,
-//#define     KC_PASTE,
-//#define     KC_FIND,
-//#define     KC__MUTE,
-//#define     KC__VOLUP,  // 0x80
-//#define     KC__VOLDOWN,
-//#define     KC_LOCKING_CAPS,
-//#define     KC_LOCKING_NUM,
-//#define     KC_LOCKING_SCROLL,
-//#define     KC_KP_COMMA,
-//#define     KC_KP_EQUAL_AS400,
-//#define     KC_INT1,
-//#define     KC_INT2,
-//#define     KC_INT3,
-//#define     KC_INT4,
-//#define     KC_INT5,
-//#define     KC_INT6,
-//#define     KC_INT7,
-//#define     KC_INT8,
-//#define     KC_INT9,
-//#define     KC_LANG1,  // 0x90
-//#define     KC_LANG2,
-//#define     KC_LANG3,
-//#define     KC_LANG4,
-//#define     KC_LANG5,
-//#define     KC_LANG6,
-//#define     KC_LANG7,
-//#define     KC_LANG8,
-//#define     KC_LANG9,
-//#define     KC_ALT_ERASE,
-//#define     KC_SYSREQ,
-//#define     KC_CANCEL,
-//#define     KC_CLEAR,
-//#define     KC_PRIOR,
-//#define     KC_RETURN,
-//#define     KC_SEPARATOR,
-//#define     KC_OUT,  // 0xA0
-//#define     KC_OPER,
-//#define     KC_CLEAR_AGAIN,
-//#define     KC_CRSEL,
-//#define     KC_EXSEL,
-//#define 
-//#define #if 0
-//#define   // ***************************************************************
-//#define   // These keycodes are present in the HID spec, but are           *
-//#define   // nonfunctional on modern OSes. QMK uses this range (0xA5-0xDF) *
-//#define   // for the media and function keys instead - see below.          *
-//#define   // ***************************************************************
-//#define 
-//#define   KC_KP_00                = 0xB0,
-//#define   KC_KP_000,
-//#define   KC_THOUSANDS_SEPARATOR,
-//#define   KC_DECIMAL_SEPARATOR,
-//#define   KC_CURRENCY_UNIT,
-//#define   KC_CURRENCY_SUB_UNIT,
-//#define   KC_KP_LPAREN,
+#define     KC_F24 KEY_F24 // = 0xFB = 0x74 + 0x88
 
-#define KC_INT1 0x87
-#define KC_INT2 0x88
-#define KC_INT3 0x89
-#define KC_INT4 0x8a
-#define KC_INT5 0x8b
 
-#define     KC_LCTRL  KEY_LEFT_CTRL
-#define     KC_LSHIFT KEY_LEFT_SHIFT
-#define     KC_LALT   KEY_LEFT_ALT
-#define     KC_LGUI   KEY_LEFT_GUI
-#define     KC_RCTRL  KEY_RIGHT_CTRL
-#define     KC_RSHIFT KEY_RIGHT_SHIFT
-#define     KC_RALT   KEY_RIGHT_ALT
-#define     KC_RGUI   KEY_RIGHT_GUI
+// JP
+//https://beta.docs.qmk.fm/using-qmk/simple-keycodes/keycodes_basic
+#define JP_ZKHK KC_GRV  // Zenkaku ↔︎ Hankaku ↔ Kanji (半角 ↔ 全角 ↔ 漢字)
+#define JP_MINS KC_MINS // -
+#define JP_CIRC KC_EQL  // ^
+#define JP_AT   KC_LBRC // @
+#define JP_LBRC KC_RBRC // [
+#define JP_SCLN KC_SCLN // ;
+#define JP_COLN KC_QUOT // :
+#define JP_COMM KC_COMM // ,
+#define JP_DOT  KC_DOT  // .
+#define JP_SLSH KC_SLSH // /
+#define JP_EISU KC_CAPS // Eisū (英数)
+
+//#define JP_KANA KC_INT0 // Katakana ↔ Hiragana ↔ Rōmaji (カタカナ ↔ ひらがな ↔ ローマ字)
+//#define JP_HENK KC_INT2 // Henkan (変換)
+#define JP_BSLS KC_INT1 // (backslash)
+#define JP_YEN  KC_INT3 // ¥
+#define JP_MHEN KC_INT5 // Muhenkan (無変換)
+#define JP_RBRC KC_NUHS // ], 0x30

@@ -27,7 +27,8 @@
 #define PIN_ROW_7 26
 #define PIN_ROW_8 27
 
-#define KEY_SCAN_WAIT_MS   1
+#define KEY_SCAN_WAIT_MS      1
+#define KEY_INTERVAL_MIN_MS    100 // same key
 
 /*
   KC_NO: no action
@@ -46,7 +47,7 @@
   L40,L41, L42, L43, L44, L45,      R40,R41,R42,R43,R44,R45,R46,\
   L50, L51,L52,L53,L54,   L55,       R50, R51,R52,R53,R54 \
 ) \
-{ \ 
+{ \
   { L00, L01, L02, L03, L04, L05,  L50, L51, L52 }, \
   { L10, L11, L12, L13, L14, L15,  L40, L41, L42 }, \
   { L20, L21, L22, L23, L24, L25,  L55, L54, L53 }, \

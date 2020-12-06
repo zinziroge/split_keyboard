@@ -2,6 +2,8 @@
     key scan flow:
       1. loop row, col
       2. r,c -> keymaps[][r][c] -> qmk keycode -> blekb keycode
+
+
 */
 #include <stdint.h>
 
@@ -10,12 +12,10 @@
 
 // keyboard
 #include "keysw.h"
-//#include "blekb2qmk.h"
-//#include "keymap_jp.h"
 
 
 // 
-BleKeyboard bleKeyboard("skb81");
+BleKeyboard bleKeyboard("skb81_trainee");
 extern int col_pins[];
 extern int row_pins[];
 extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
@@ -55,19 +55,30 @@ void setup(void)
     }
 }
 
-bool is_ascii(const uint16_t key)
+bool is_ascii(const uint16_t keycode)
 {
-    if(key <= 0x03) {
+    if(keycode <= 0x03) {
         return false;
-    } else if(key <= 0x38){
+    } else if(keycode <= 0x38){
         return true;
     } else  {
         return false;
     }
 }
 
+bool is_modifier(const uint16_t keycode)
+{
+    if((KC_LCTRL <= keycode) && (keycode <= KC_RGUI)) {
+        return true;
+    }
+    return false;
+}
+
 void loop(void)
 {
+    static uint16_t prev_pressed_keycode = 0;
+    static uint32_t prev_t = millis();
+
     if (1){
     //if (bleKeyboard.isConnected()) {
         int c, r;
@@ -77,17 +88,33 @@ void loop(void)
             digitalWrite(col_pins[c], LOW);
             for (r = 0; r < MATRIX_ROWS; r++) { // input
                 delay(KEY_SCAN_WAIT_MS);
+                uint32_t cur_t = millis();
                 sw_val = digitalRead(row_pins[r]);
-                if (sw_val == 0) {
-                    uint16_t keycode = keymaps[0][r][c];
-                    bleKeyboard.write(keycode); // keycode < 128 はascii code, それ以上は特別対応される
-                    sprintf(buf, "(%d, %d)=%d,0x%02x,0x%02x",
-                        r, c, sw_val, keycode, 'a');
+                uint16_t keycode = keymaps[0][r][c];
+                size_t ret;
+
+                if (sw_val == 0) { // sw is pushed
+                    if(is_modifier(keycode)) {
+                        ret = bleKeyboard.press(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+                    } else {
+                        if(cur_t - prev_t > KEY_INTERVAL_MIN_MS) {
+                            ret = bleKeyboard.write(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+                            prev_t = cur_t;
+                        }
+                    }
+                    prev_pressed_keycode = keycode;
+
+                    sprintf(buf, "(%d, %d)=%d,0x%02x,'%c', %d",
+                        r, c, sw_val, keycode, (char)(keycode & 0xFF), (int)ret);
                     Serial.println(buf);
+                } else {
+                    if(is_modifier(keycode)) {
+                        bleKeyboard.release(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+                    }
                 }
-            }
+            } // r
             digitalWrite(col_pins[c], HIGH);
-        }
+        } // c
     }
 }
 
