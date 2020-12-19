@@ -121,20 +121,22 @@ void setup(void)
     //bleKeyboard.releaseAll();
 
     // I2C
-    Wire.begin(21, 22);//Wire.begin(SDA, SCL)
-    //Wire.begin(14, 13);//Wire.begin(SDA, SCL)
-    //Wire.begin(32, 26);//Wire.begin(SDA, SCL)
     //Wire.begin();//Wire.begin(SDA, SCL)
-    Wire.setClock(10000);// 100kbits/sec
     //https://asukiaaa.blogspot.com/2020/03/arduinoi2c.html
+    // esp32
+    //Wire.begin(14, 13);//Wire.begin(SDA, SCL)
     //pinMode(13, INPUT);
     //pinMode(14, INPUT);
     // pico, M5 Atom Echo
-    //pinMode(32, INPUT);
-    //pinMode(26, INPUT);
+    //https://wiki.seeedstudio.com/Grove_System/
+    Wire.begin(26, 32);//Wire.begin(SDA, SCL), yello=SCL, white=SDA
+    pinMode(26, INPUT);
+    pinMode(32, INPUT);
     //m5 stack core
-    pinMode(21, INPUT);
-    pinMode(22, INPUT);
+    //Wire.begin(21, 22);//Wire.begin(SDA, SCL)
+    //pinMode(21, INPUT);
+    //pinMode(22, INPUT);
+    Wire.setClock(10000);// 100kbits/sec
     i2c_write_reg(MCP23017_ADDR, MCP23017_IODIR_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力設定, row
     i2c_write_reg(MCP23017_ADDR, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力ﾌﾟﾙｱｯﾌﾟ設定
     i2c_write_reg(MCP23017_ADDR, MCP23017_IODIR_B_ADR, 0x00);     // DVC00 I/O-PortB 出力設定, col
