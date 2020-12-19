@@ -46,17 +46,6 @@ Wire Wire Line
 Wire Wire Line
 	1400 1600 1400 1500
 $Comp
-L keyboard_parts:GND #PWR01
-U 1 1 5FA2289E
-P 1100 1600
-F 0 "#PWR01" H 1100 1650 20  0001 C CNN
-F 1 "GND" H 1100 1659 30  0000 C CNN
-F 2 "" H 1100 1600 60  0000 C CNN
-F 3 "" H 1100 1600 60  0000 C CNN
-	1    1100 1600
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:VCC #PWR02
 U 1 1 5FA22DAF
 P 1400 1500
@@ -71,10 +60,6 @@ Text GLabel 4700 4200 2    50   Input ~ 0
 ROW_4
 Text GLabel 4700 4300 2    50   Input ~ 0
 ROW_5
-Text GLabel 4700 4400 2    50   Input ~ 0
-ROW_6
-Text GLabel 4700 4500 2    50   Input ~ 0
-ROW_7
 Text GLabel 4700 5400 2    50   Input ~ 0
 COL_7
 Text GLabel 4700 4700 2    50   Input ~ 0
@@ -126,7 +111,7 @@ U 1 1 5FB4051F
 P 6600 2750
 F 0 "C1" H 6718 2796 50  0000 L CNN
 F 1 "CP" H 6718 2705 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal" H 6638 2600 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 6638 2600 50  0001 C CNN
 F 3 "~" H 6600 2750 50  0001 C CNN
 	1    6600 2750
 	1    0    0    -1  
@@ -142,20 +127,8 @@ F 3 "~" H 6650 5050 50  0001 C CNN
 	1    6650 5050
 	1    0    0    -1  
 $EndComp
-$Comp
-L keyboard_parts:GND #PWR04
-U 1 1 6009AFDA
-P 4000 6000
-F 0 "#PWR04" H 4000 6050 20  0001 C CNN
-F 1 "GND" H 4000 6059 30  0000 C CNN
-F 2 "" H 4000 6000 60  0000 C CNN
-F 3 "" H 4000 6000 60  0000 C CNN
-	1    4000 6000
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4000 5700 4000 6000
-Connection ~ 4000 6000
 $Comp
 L power:VCC #PWR03
 U 1 1 6009E716
@@ -317,30 +290,19 @@ Text GLabel 8675 4125 0    50   Input ~ 0
 SCL_GROVE
 Text GLabel 8675 4225 0    50   Input ~ 0
 SDA_GROVE
-Text GLabel 9975 4125 2    50   Input ~ 0
+Text GLabel 10750 4325 2    50   Input ~ 0
 SCL_MCP
-Text GLabel 9975 4225 2    50   Input ~ 0
+Text GLabel 10750 4425 2    50   Input ~ 0
 SDA_MCP
-$Comp
-L keyboard_parts:GND #PWR06
-U 1 1 5FD6F408
-P 9300 4625
-F 0 "#PWR06" H 9300 4675 20  0001 C CNN
-F 1 "GND" H 9300 4684 30  0000 C CNN
-F 2 "" H 9300 4625 60  0000 C CNN
-F 3 "" H 9300 4625 60  0000 C CNN
-	1    9300 4625
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:Jumper JP_I2C_EN1
 U 1 1 5FD70B30
-P 10000 4025
-F 0 "JP_I2C_EN1" H 10000 4289 50  0000 C CNN
-F 1 "I2C_EN" H 10000 4198 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10000 4025 50  0001 C CNN
-F 3 "~" H 10000 4025 50  0001 C CNN
-	1    10000 4025
+P 10400 4025
+F 0 "JP_I2C_EN1" H 10400 4289 50  0000 C CNN
+F 1 "I2C_EN" H 10400 4198 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 10400 4025 50  0001 C CNN
+F 3 "~" H 10400 4025 50  0001 C CNN
+	1    10400 4025
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -355,9 +317,7 @@ F 3 "" H 9400 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9400 3350 10300 3350
-Wire Wire Line
-	10300 3350 10300 4025
+	10700 3350 10700 4025
 Connection ~ 9400 3350
 $Comp
 L Jumper:SolderJumper_3_Open JP_A1
@@ -437,61 +397,17 @@ Wire Wire Line
 Wire Wire Line
 	1975 5000 1975 5550
 Connection ~ 2100 5000
-$Comp
-L Jumper:SolderJumper_2_Open JP_SCL1
-U 1 1 5FDC04E4
-P 9300 5125
-F 0 "JP_SCL1" H 9300 5330 50  0000 C CNN
-F 1 "SCL" H 9300 5239 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 9300 5125 50  0001 C CNN
-F 3 "~" H 9300 5125 50  0001 C CNN
-	1    9300 5125
-	1    0    0    -1  
-$EndComp
-$Comp
-L Jumper:SolderJumper_2_Open JP_SDA1
-U 1 1 5FDC0DDF
-P 9300 5450
-F 0 "JP_SDA1" H 9300 5655 50  0000 C CNN
-F 1 "SDA" H 9300 5564 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 9300 5450 50  0001 C CNN
-F 3 "~" H 9300 5450 50  0001 C CNN
-	1    9300 5450
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8675 4125 8825 4125
 Wire Wire Line
 	8825 4125 8825 5125
-Wire Wire Line
-	8825 5125 9150 5125
 Connection ~ 8825 4125
 Wire Wire Line
 	8825 4125 8900 4125
 Wire Wire Line
-	9700 4125 9800 4125
-Wire Wire Line
-	9700 4225 9875 4225
-Wire Wire Line
-	9450 5125 9800 5125
-Wire Wire Line
-	9800 5125 9800 4125
-Connection ~ 9800 4125
-Wire Wire Line
-	9800 4125 9975 4125
-Wire Wire Line
-	9875 4225 9875 5450
-Wire Wire Line
-	9875 5450 9450 5450
-Connection ~ 9875 4225
-Wire Wire Line
-	9875 4225 9975 4225
-Wire Wire Line
 	8675 4225 8750 4225
 Wire Wire Line
 	8750 4225 8750 5450
-Wire Wire Line
-	8750 5450 9150 5450
 Connection ~ 8750 4225
 Wire Wire Line
 	8750 4225 8900 4225
@@ -538,4 +454,97 @@ Wire Wire Line
 	9400 3350 9400 3625
 Text GLabel 6600 2300 0    50   Input ~ 0
 VIN
+$Comp
+L Jumper:SolderJumper_3_Open JP_SCL1
+U 1 1 5FDE0F4F
+P 10000 4325
+F 0 "JP_SCL1" H 10000 4438 50  0000 C CNN
+F 1 "I2C_A2" H 10000 4529 50  0000 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels" H 10000 4325 50  0001 C CNN
+F 3 "~" H 10000 4325 50  0001 C CNN
+	1    10000 4325
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Jumper:SolderJumper_3_Open JP_SDA1
+U 1 1 5FDE2768
+P 10425 4425
+F 0 "JP_SDA1" H 10425 4538 50  0000 C CNN
+F 1 "I2C_A2" H 10425 4629 50  0000 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels" H 10425 4425 50  0001 C CNN
+F 3 "~" H 10425 4425 50  0001 C CNN
+	1    10425 4425
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10150 4325 10750 4325
+Wire Wire Line
+	10575 4425 10750 4425
+Wire Wire Line
+	9700 4025 10100 4025
+Wire Wire Line
+	9700 4225 10425 4225
+Wire Wire Line
+	10000 5125 10000 4525
+Wire Wire Line
+	8825 5125 10000 5125
+Wire Wire Line
+	10425 5450 10425 4625
+Wire Wire Line
+	8750 5450 10425 5450
+Wire Wire Line
+	9400 3350 10700 3350
+$Comp
+L power:GND #PWR0101
+U 1 1 5FE1FAC4
+P 1100 1600
+F 0 "#PWR0101" H 1100 1350 50  0001 C CNN
+F 1 "GND" H 1105 1427 50  0000 C CNN
+F 2 "" H 1100 1600 50  0001 C CNN
+F 3 "" H 1100 1600 50  0001 C CNN
+	1    1100 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0102
+U 1 1 5FE202E5
+P 4000 6000
+F 0 "#PWR0102" H 4000 5750 50  0001 C CNN
+F 1 "GND" H 4005 5827 50  0000 C CNN
+F 2 "" H 4000 6000 50  0001 C CNN
+F 3 "" H 4000 6000 50  0001 C CNN
+	1    4000 6000
+	1    0    0    -1  
+$EndComp
+Connection ~ 4000 6000
+$Comp
+L power:GND #PWR0103
+U 1 1 5FE212CE
+P 9300 4625
+F 0 "#PWR0103" H 9300 4375 50  0001 C CNN
+F 1 "GND" H 9305 4452 50  0000 C CNN
+F 2 "" H 9300 4625 50  0001 C CNN
+F 3 "" H 9300 4625 50  0001 C CNN
+	1    9300 4625
+	1    0    0    -1  
+$EndComp
+Text GLabel 1550 1500 2    50   Input ~ 0
+VCC5V
+Wire Wire Line
+	1550 1500 1400 1500
+Connection ~ 1400 1500
+Wire Wire Line
+	9700 4125 10000 4125
+NoConn ~ 7700 4100
+NoConn ~ 7700 4200
+NoConn ~ 6850 4200
+NoConn ~ 6850 4300
+NoConn ~ 6850 4400
+NoConn ~ 6850 4500
+NoConn ~ 3300 4400
+NoConn ~ 3300 4500
+NoConn ~ 4700 4400
+NoConn ~ 6625 2300
+Text GLabel 4700 4500 2    50   Input ~ 0
+COL_8
 $EndSCHEMATC

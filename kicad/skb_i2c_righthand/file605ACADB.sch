@@ -1129,20 +1129,6 @@ F 3 "" H 8225 3550 50  0000 C CNN
 $EndComp
 $Comp
 L kbd:SW_PUSH SW?
-U 1 1 5FDF62F7
-P 9225 3550
-AR Path="/5FDF62F7" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FDF62F7" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FDF62F7" Ref="SW46"  Part="1" 
-F 0 "SW46" H 9225 3805 50  0000 C CNN
-F 1 "SW_PUSH" H 9225 3714 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 9225 3550 50  0001 C CNN
-F 3 "" H 9225 3550 50  0000 C CNN
-	1    9225 3550
-	1    0    0    -1  
-$EndComp
-$Comp
-L kbd:SW_PUSH SW?
 U 1 1 5FDF62FD
 P 8225 2250
 AR Path="/5FDF62FD" Ref="SW?"  Part="1" 
@@ -1244,7 +1230,6 @@ Connection ~ 7925 3550
 Connection ~ 8925 1600
 Connection ~ 8925 2250
 Connection ~ 8925 2900
-Connection ~ 8925 3550
 Wire Wire Line
 	7525 3200 8525 3200
 $Comp
@@ -1280,20 +1265,6 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9525 
 $EndComp
 $Comp
 L Diode:1N4148 D?
-U 1 1 5FDF633F
-P 9525 3700
-AR Path="/5FDF633F" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FDF633F" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FDF633F" Ref="D46"  Part="1" 
-F 0 "D46" V 9571 3620 50  0000 R CNN
-F 1 "1N4148" V 9480 3620 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9525 3525 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9525 3700 50  0001 C CNN
-	1    9525 3700
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Diode:1N4148 D?
 U 1 1 5FDF6345
 P 8525 3700
 AR Path="/5FDF6345" Ref="D?"  Part="1" 
@@ -1306,9 +1277,6 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8525 
 	1    8525 3700
 	0    -1   -1   0   
 $EndComp
-Connection ~ 8525 3850
-Wire Wire Line
-	8525 3850 9525 3850
 Wire Wire Line
 	7525 3850 8525 3850
 Text GLabel 7925 1200 1    50   Input ~ 0
@@ -1328,34 +1296,6 @@ F 3 "" H 8225 4200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FDF6356
-P 9225 4200
-AR Path="/5FDF6356" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FDF6356" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FDF6356" Ref="SW47"  Part="1" 
-F 0 "SW47" H 9225 4455 50  0000 C CNN
-F 1 "SW_PUSH" H 9225 4364 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 9225 4200 50  0001 C CNN
-F 3 "" H 9225 4200 50  0000 C CNN
-	1    9225 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FDF6362
-P 9225 4850
-AR Path="/5FDF6362" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FDF6362" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FDF6362" Ref="SW48"  Part="1" 
-F 0 "SW48" H 9225 5105 50  0000 C CNN
-F 1 "SW_PUSH" H 9225 5014 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 9225 4850 50  0001 C CNN
-F 3 "" H 9225 4850 50  0000 C CNN
-	1    9225 4850
-	1    0    0    -1  
-$EndComp
-$Comp
 L Diode:1N4148 D?
 U 1 1 5FDF6369
 P 8525 4350
@@ -1369,40 +1309,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8525 
 	1    8525 4350
 	0    -1   -1   0   
 $EndComp
-Connection ~ 8525 4500
-Wire Wire Line
-	8525 4500 9525 4500
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FDF6371
-P 9525 4350
-AR Path="/5FDF6371" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FDF6371" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FDF6371" Ref="D47"  Part="1" 
-F 0 "D47" V 9571 4270 50  0000 R CNN
-F 1 "1N4148" V 9480 4270 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9525 4175 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9525 4350 50  0001 C CNN
-	1    9525 4350
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FDF6377
-P 9525 5000
-AR Path="/5FDF6377" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FDF6377" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FDF6377" Ref="D48"  Part="1" 
-F 0 "D48" V 9571 4920 50  0000 R CNN
-F 1 "1N4148" V 9480 4920 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9525 4825 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9525 5000 50  0001 C CNN
-	1    9525 5000
-	0    -1   -1   0   
-$EndComp
 Connection ~ 7925 4200
-Connection ~ 8925 4200
-Connection ~ 8925 4850
 Wire Wire Line
 	7925 2900 7925 3550
 Wire Wire Line
@@ -1410,25 +1317,15 @@ Wire Wire Line
 Wire Wire Line
 	7925 1200 7925 1600
 Wire Wire Line
-	8925 4200 8925 4850
-Wire Wire Line
 	7925 1600 7925 2250
 Wire Wire Line
 	8925 1600 8925 2250
 Wire Wire Line
 	7925 4150 7925 4200
 Wire Wire Line
-	8925 3150 8925 3550
-Wire Wire Line
-	8925 4150 8925 4200
-Wire Wire Line
 	7925 3550 7925 4200
 Wire Wire Line
 	8925 1200 8925 1600
-Wire Wire Line
-	8925 2900 8925 3550
-Wire Wire Line
-	8925 3550 8925 4200
 Text GLabel 8925 1200 1    50   Input ~ 0
 COL_7
 $Comp
@@ -1443,34 +1340,6 @@ F 1 "SW_PUSH" H 10225 1764 50  0000 C CNN
 F 2 "keyboard_parts:Kailh_MX_Socket" H 10225 1600 50  0001 C CNN
 F 3 "" H 10225 1600 50  0000 C CNN
 	1    10225 1600
-	1    0    0    -1  
-$EndComp
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FE0D824
-P 10225 2900
-AR Path="/5FE0D824" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FE0D824" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FE0D824" Ref="SW51"  Part="1" 
-F 0 "SW51" H 10225 3155 50  0000 C CNN
-F 1 "SW_PUSH" H 10225 3064 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 10225 2900 50  0001 C CNN
-F 3 "" H 10225 2900 50  0000 C CNN
-	1    10225 2900
-	1    0    0    -1  
-$EndComp
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FE0D82A
-P 10225 3550
-AR Path="/5FE0D82A" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FE0D82A" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FE0D82A" Ref="SW52"  Part="1" 
-F 0 "SW52" H 10225 3805 50  0000 C CNN
-F 1 "SW_PUSH" H 10225 3714 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 10225 3550 50  0001 C CNN
-F 3 "" H 10225 3550 50  0000 C CNN
-	1    10225 3550
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1521,118 +1390,12 @@ Wire Wire Line
 	9525 2550 10525 2550
 Connection ~ 9925 1600
 Connection ~ 9925 2250
-Connection ~ 9925 2900
-Connection ~ 9925 3550
-Wire Wire Line
-	9525 3200 10525 3200
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FE0D849
-P 10525 3050
-AR Path="/5FE0D849" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FE0D849" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FE0D849" Ref="D51"  Part="1" 
-F 0 "D51" V 10571 2970 50  0000 R CNN
-F 1 "1N4148" V 10480 2970 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10525 2875 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10525 3050 50  0001 C CNN
-	1    10525 3050
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FE0D84F
-P 10525 3700
-AR Path="/5FE0D84F" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FE0D84F" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FE0D84F" Ref="D52"  Part="1" 
-F 0 "D52" V 10571 3620 50  0000 R CNN
-F 1 "1N4148" V 10480 3620 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10525 3525 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10525 3700 50  0001 C CNN
-	1    10525 3700
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9525 3850 10525 3850
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FE0D856
-P 10225 4200
-AR Path="/5FE0D856" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FE0D856" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FE0D856" Ref="SW53"  Part="1" 
-F 0 "SW53" H 10225 4455 50  0000 C CNN
-F 1 "SW_PUSH" H 10225 4364 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 10225 4200 50  0001 C CNN
-F 3 "" H 10225 4200 50  0000 C CNN
-	1    10225 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 5FE0D85C
-P 10225 4850
-AR Path="/5FE0D85C" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/5FE0D85C" Ref="SW?"  Part="1" 
-AR Path="/605ACADC/5FE0D85C" Ref="SW54"  Part="1" 
-F 0 "SW54" H 10225 5105 50  0000 C CNN
-F 1 "SW_PUSH" H 10225 5014 50  0000 C CNN
-F 2 "keyboard_parts:Kailh_MX_Socket" H 10225 4850 50  0001 C CNN
-F 3 "" H 10225 4850 50  0000 C CNN
-	1    10225 4850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9525 4500 10525 4500
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FE0D863
-P 10525 4350
-AR Path="/5FE0D863" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FE0D863" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FE0D863" Ref="D53"  Part="1" 
-F 0 "D53" V 10571 4270 50  0000 R CNN
-F 1 "1N4148" V 10480 4270 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10525 4175 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10525 4350 50  0001 C CNN
-	1    10525 4350
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Diode:1N4148 D?
-U 1 1 5FE0D869
-P 10525 5000
-AR Path="/5FE0D869" Ref="D?"  Part="1" 
-AR Path="/6006EC30/5FE0D869" Ref="D?"  Part="1" 
-AR Path="/605ACADC/5FE0D869" Ref="D54"  Part="1" 
-F 0 "D54" V 10571 4920 50  0000 R CNN
-F 1 "1N4148" V 10480 4920 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10525 4825 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10525 5000 50  0001 C CNN
-	1    10525 5000
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9525 5150 10525 5150
-Connection ~ 9925 4200
-Connection ~ 9925 4850
 Wire Wire Line
 	9925 2250 9925 2900
 Wire Wire Line
-	9925 4200 9925 4850
-Wire Wire Line
 	9925 1600 9925 2250
 Wire Wire Line
-	9925 3150 9925 3550
-Wire Wire Line
-	9925 4150 9925 4200
-Wire Wire Line
 	9925 1200 9925 1600
-Wire Wire Line
-	9925 2900 9925 3550
-Wire Wire Line
-	9925 3550 9925 4200
 Text GLabel 9925 1200 1    50   Input ~ 0
 COL_8
 Wire Wire Line
@@ -1647,18 +1410,10 @@ Wire Wire Line
 	5925 4850 5925 6150
 Wire Wire Line
 	6925 4850 6925 6150
-Wire Wire Line
-	8925 4850 8925 6150
-Wire Wire Line
-	9925 4850 9925 6150
-Connection ~ 9525 4500
-Connection ~ 9525 3850
-Connection ~ 9525 3200
 Connection ~ 9525 2550
 Connection ~ 9525 1900
 Connection ~ 7525 1900
 Connection ~ 7525 5150
-Connection ~ 9525 5150
 Connection ~ 7525 2550
 Connection ~ 7525 3200
 Connection ~ 7525 3850
@@ -1829,9 +1584,6 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8525 
 	1    8525 5000
 	0    -1   -1   0   
 $EndComp
-Connection ~ 8525 5150
-Wire Wire Line
-	8525 5150 9525 5150
 $Comp
 L Diode:1N4148 D?
 U 1 1 5FE5818A
@@ -1917,4 +1669,6 @@ $EndComp
 Connection ~ 3525 1900
 Wire Wire Line
 	3525 1900 4525 1900
+Wire Wire Line
+	8925 2900 8925 6150
 $EndSCHEMATC

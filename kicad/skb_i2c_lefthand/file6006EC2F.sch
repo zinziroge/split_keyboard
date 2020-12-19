@@ -21,7 +21,7 @@ AR Path="/600814B9" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814B9" Ref="SW9"  Part="1" 
 F 0 "SW9" H 2900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 1450 50  0001 C CNN
 F 3 "" H 2900 1450 50  0000 C CNN
 	1    2900 1450
 	1    0    0    -1  
@@ -34,7 +34,7 @@ AR Path="/600814BF" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814BF" Ref="SW1"  Part="1" 
 F 0 "SW1" H 1900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 1450 50  0001 C CNN
 F 3 "" H 1900 1450 50  0000 C CNN
 	1    1900 1450
 	1    0    0    -1  
@@ -47,7 +47,7 @@ AR Path="/600814C5" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814C5" Ref="SW2"  Part="1" 
 F 0 "SW2" H 1900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 2100 50  0001 C CNN
 F 3 "" H 1900 2100 50  0000 C CNN
 	1    1900 2100
 	1    0    0    -1  
@@ -60,7 +60,7 @@ AR Path="/600814CB" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814CB" Ref="SW10"  Part="1" 
 F 0 "SW10" H 2900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 2100 50  0001 C CNN
 F 3 "" H 2900 2100 50  0000 C CNN
 	1    2900 2100
 	1    0    0    -1  
@@ -149,7 +149,7 @@ AR Path="/600814F9" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814F9" Ref="SW17"  Part="1" 
 F 0 "SW17" H 3900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 1450 50  0001 C CNN
 F 3 "" H 3900 1450 50  0000 C CNN
 	1    3900 1450
 	1    0    0    -1  
@@ -162,7 +162,7 @@ AR Path="/600814FF" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600814FF" Ref="SW25"  Part="1" 
 F 0 "SW25" H 4900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 1450 50  0001 C CNN
 F 3 "" H 4900 1450 50  0000 C CNN
 	1    4900 1450
 	1    0    0    -1  
@@ -175,7 +175,7 @@ AR Path="/60081505" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081505" Ref="SW33"  Part="1" 
 F 0 "SW33" H 5900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 1450 50  0001 C CNN
 F 3 "" H 5900 1450 50  0000 C CNN
 	1    5900 1450
 	1    0    0    -1  
@@ -188,7 +188,7 @@ AR Path="/6008150B" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008150B" Ref="SW41"  Part="1" 
 F 0 "SW41" H 6900 1705 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 1614 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 1450 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 1450 50  0001 C CNN
 F 3 "" H 6900 1450 50  0000 C CNN
 	1    6900 1450
 	1    0    0    -1  
@@ -201,7 +201,7 @@ AR Path="/60081517" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081517" Ref="SW3"  Part="1" 
 F 0 "SW3" H 1900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 2750 50  0001 C CNN
 F 3 "" H 1900 2750 50  0000 C CNN
 	1    1900 2750
 	1    0    0    -1  
@@ -214,7 +214,7 @@ AR Path="/6008151D" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008151D" Ref="SW4"  Part="1" 
 F 0 "SW4" H 1900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 3400 50  0001 C CNN
 F 3 "" H 1900 3400 50  0000 C CNN
 	1    1900 3400
 	1    0    0    -1  
@@ -242,7 +242,7 @@ AR Path="/6008152A" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008152A" Ref="SW11"  Part="1" 
 F 0 "SW11" H 2900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 2750 50  0001 C CNN
 F 3 "" H 2900 2750 50  0000 C CNN
 	1    2900 2750
 	1    0    0    -1  
@@ -272,7 +272,7 @@ AR Path="/60081539" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081539" Ref="SW19"  Part="1" 
 F 0 "SW19" H 3900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 2750 50  0001 C CNN
 F 3 "" H 3900 2750 50  0000 C CNN
 	1    3900 2750
 	1    0    0    -1  
@@ -285,7 +285,7 @@ AR Path="/6008153F" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008153F" Ref="SW27"  Part="1" 
 F 0 "SW27" H 4900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 2750 50  0001 C CNN
 F 3 "" H 4900 2750 50  0000 C CNN
 	1    4900 2750
 	1    0    0    -1  
@@ -298,7 +298,7 @@ AR Path="/60081545" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081545" Ref="SW35"  Part="1" 
 F 0 "SW35" H 5900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 2750 50  0001 C CNN
 F 3 "" H 5900 2750 50  0000 C CNN
 	1    5900 2750
 	1    0    0    -1  
@@ -311,7 +311,7 @@ AR Path="/6008154B" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008154B" Ref="SW43"  Part="1" 
 F 0 "SW43" H 6900 3005 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 2914 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 2750 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 2750 50  0001 C CNN
 F 3 "" H 6900 2750 50  0000 C CNN
 	1    6900 2750
 	1    0    0    -1  
@@ -326,7 +326,7 @@ AR Path="/60081558" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081558" Ref="SW12"  Part="1" 
 F 0 "SW12" H 2900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 3400 50  0001 C CNN
 F 3 "" H 2900 3400 50  0000 C CNN
 	1    2900 3400
 	1    0    0    -1  
@@ -356,7 +356,7 @@ AR Path="/60081567" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081567" Ref="SW20"  Part="1" 
 F 0 "SW20" H 3900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 3400 50  0001 C CNN
 F 3 "" H 3900 3400 50  0000 C CNN
 	1    3900 3400
 	1    0    0    -1  
@@ -369,7 +369,7 @@ AR Path="/6008156D" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008156D" Ref="SW28"  Part="1" 
 F 0 "SW28" H 4900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 3400 50  0001 C CNN
 F 3 "" H 4900 3400 50  0000 C CNN
 	1    4900 3400
 	1    0    0    -1  
@@ -382,7 +382,7 @@ AR Path="/60081573" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081573" Ref="SW36"  Part="1" 
 F 0 "SW36" H 5900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 3400 50  0001 C CNN
 F 3 "" H 5900 3400 50  0000 C CNN
 	1    5900 3400
 	1    0    0    -1  
@@ -395,7 +395,7 @@ AR Path="/60081579" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081579" Ref="SW44"  Part="1" 
 F 0 "SW44" H 6900 3655 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 3564 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 3400 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 3400 50  0001 C CNN
 F 3 "" H 6900 3400 50  0000 C CNN
 	1    6900 3400
 	1    0    0    -1  
@@ -410,7 +410,7 @@ AR Path="/60081586" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081586" Ref="SW18"  Part="1" 
 F 0 "SW18" H 3900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 2100 50  0001 C CNN
 F 3 "" H 3900 2100 50  0000 C CNN
 	1    3900 2100
 	1    0    0    -1  
@@ -436,7 +436,7 @@ AR Path="/60081592" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081592" Ref="SW26"  Part="1" 
 F 0 "SW26" H 4900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 2100 50  0001 C CNN
 F 3 "" H 4900 2100 50  0000 C CNN
 	1    4900 2100
 	1    0    0    -1  
@@ -449,7 +449,7 @@ AR Path="/60081598" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081598" Ref="SW34"  Part="1" 
 F 0 "SW34" H 5900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 2100 50  0001 C CNN
 F 3 "" H 5900 2100 50  0000 C CNN
 	1    5900 2100
 	1    0    0    -1  
@@ -462,7 +462,7 @@ AR Path="/6008159E" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008159E" Ref="SW42"  Part="1" 
 F 0 "SW42" H 6900 2355 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 2264 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 2100 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 2100 50  0001 C CNN
 F 3 "" H 6900 2100 50  0000 C CNN
 	1    6900 2100
 	1    0    0    -1  
@@ -761,7 +761,7 @@ AR Path="/600816A4" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816A4" Ref="SW13"  Part="1" 
 F 0 "SW13" H 2900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 4050 50  0001 C CNN
 F 3 "" H 2900 4050 50  0000 C CNN
 	1    2900 4050
 	1    0    0    -1  
@@ -774,7 +774,7 @@ AR Path="/600816AA" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816AA" Ref="SW5"  Part="1" 
 F 0 "SW5" H 1900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 4050 50  0001 C CNN
 F 3 "" H 1900 4050 50  0000 C CNN
 	1    1900 4050
 	1    0    0    -1  
@@ -787,7 +787,7 @@ AR Path="/600816B0" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816B0" Ref="SW6"  Part="1" 
 F 0 "SW6" H 1900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 1900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 1900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 1900 4700 50  0001 C CNN
 F 3 "" H 1900 4700 50  0000 C CNN
 	1    1900 4700
 	1    0    0    -1  
@@ -800,7 +800,7 @@ AR Path="/600816B6" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816B6" Ref="SW14"  Part="1" 
 F 0 "SW14" H 2900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 2900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 2900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 2900 4700 50  0001 C CNN
 F 3 "" H 2900 4700 50  0000 C CNN
 	1    2900 4700
 	1    0    0    -1  
@@ -881,7 +881,7 @@ AR Path="/600816E0" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816E0" Ref="SW21"  Part="1" 
 F 0 "SW21" H 3900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 4050 50  0001 C CNN
 F 3 "" H 3900 4050 50  0000 C CNN
 	1    3900 4050
 	1    0    0    -1  
@@ -894,7 +894,7 @@ AR Path="/600816E6" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816E6" Ref="SW29"  Part="1" 
 F 0 "SW29" H 4900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 4050 50  0001 C CNN
 F 3 "" H 4900 4050 50  0000 C CNN
 	1    4900 4050
 	1    0    0    -1  
@@ -907,7 +907,7 @@ AR Path="/600816EC" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816EC" Ref="SW37"  Part="1" 
 F 0 "SW37" H 5900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 4050 50  0001 C CNN
 F 3 "" H 5900 4050 50  0000 C CNN
 	1    5900 4050
 	1    0    0    -1  
@@ -920,7 +920,7 @@ AR Path="/600816F2" Ref="SW?"  Part="1"
 AR Path="/6006EC30/600816F2" Ref="SW45"  Part="1" 
 F 0 "SW45" H 6900 4305 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 4214 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 4050 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 4050 50  0001 C CNN
 F 3 "" H 6900 4050 50  0000 C CNN
 	1    6900 4050
 	1    0    0    -1  
@@ -935,7 +935,7 @@ AR Path="/6008176D" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008176D" Ref="SW22"  Part="1" 
 F 0 "SW22" H 3900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 3900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 3900 4700 50  0001 C CNN
 F 3 "" H 3900 4700 50  0000 C CNN
 	1    3900 4700
 	1    0    0    -1  
@@ -961,7 +961,7 @@ AR Path="/60081779" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081779" Ref="SW30"  Part="1" 
 F 0 "SW30" H 4900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 4900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 4900 4700 50  0001 C CNN
 F 3 "" H 4900 4700 50  0000 C CNN
 	1    4900 4700
 	1    0    0    -1  
@@ -974,7 +974,7 @@ AR Path="/6008177F" Ref="SW?"  Part="1"
 AR Path="/6006EC30/6008177F" Ref="SW38"  Part="1" 
 F 0 "SW38" H 5900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 5900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 5900 4700 50  0001 C CNN
 F 3 "" H 5900 4700 50  0000 C CNN
 	1    5900 4700
 	1    0    0    -1  
@@ -987,7 +987,7 @@ AR Path="/60081785" Ref="SW?"  Part="1"
 AR Path="/6006EC30/60081785" Ref="SW46"  Part="1" 
 F 0 "SW46" H 6900 4955 50  0000 C CNN
 F 1 "SW_PUSH" H 6900 4864 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 4700 50  0001 C CNN
+F 2 "keyboard_parts:Kailh_MX_Socket" H 6900 4700 50  0001 C CNN
 F 3 "" H 6900 4700 50  0000 C CNN
 	1    6900 4700
 	1    0    0    -1  
@@ -1105,12 +1105,8 @@ Wire Wire Line
 	6200 5000 7200 5000
 Connection ~ 3600 4050
 Connection ~ 4600 4050
-Connection ~ 4600 4700
 Connection ~ 5600 4050
-Connection ~ 5600 4700
 Connection ~ 6600 4050
-Connection ~ 6600 4700
-Connection ~ 3600 4700
 Wire Wire Line
 	5600 2750 5600 3400
 Wire Wire Line
@@ -1219,139 +1215,4 @@ Wire Wire Line
 	1600 4700 1600 6000
 Wire Wire Line
 	2600 4700 2600 6000
-$Comp
-L Diode:1N4148 D?
-U 1 1 6008181F
-P 7200 5500
-AR Path="/6008181F" Ref="D?"  Part="1" 
-AR Path="/6006EC30/6008181F" Ref="D47"  Part="1" 
-F 0 "D47" V 7246 5420 50  0000 R CNN
-F 1 "1N4148" V 7155 5420 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7200 5325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7200 5500 50  0001 C CNN
-	1    7200 5500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	6600 5350 6600 6000
-Wire Wire Line
-	6600 4700 6600 5350
-Connection ~ 6600 5350
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 60081732
-P 6900 5350
-AR Path="/60081732" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/60081732" Ref="SW47"  Part="1" 
-F 0 "SW47" H 6900 5605 50  0000 C CNN
-F 1 "SW_PUSH" H 6900 5514 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 6900 5350 50  0001 C CNN
-F 3 "" H 6900 5350 50  0000 C CNN
-	1    6900 5350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6200 5650 7200 5650
-Connection ~ 6200 5650
-$Comp
-L Diode:1N4148 D?
-U 1 1 60081817
-P 6200 5500
-AR Path="/60081817" Ref="D?"  Part="1" 
-AR Path="/6006EC30/60081817" Ref="D39"  Part="1" 
-F 0 "D39" V 6246 5420 50  0000 R CNN
-F 1 "1N4148" V 6155 5420 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6200 5325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 6200 5500 50  0001 C CNN
-	1    6200 5500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5600 6000 5600 5350
-Wire Wire Line
-	5600 5350 5600 4700
-Connection ~ 5600 5350
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 6008172C
-P 5900 5350
-AR Path="/6008172C" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/6008172C" Ref="SW39"  Part="1" 
-F 0 "SW39" H 5900 5605 50  0000 C CNN
-F 1 "SW_PUSH" H 5900 5514 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 5900 5350 50  0001 C CNN
-F 3 "" H 5900 5350 50  0000 C CNN
-	1    5900 5350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 5650 6200 5650
-Connection ~ 5200 5650
-$Comp
-L Diode:1N4148 D?
-U 1 1 6008180F
-P 5200 5500
-AR Path="/6008180F" Ref="D?"  Part="1" 
-AR Path="/6006EC30/6008180F" Ref="D31"  Part="1" 
-F 0 "D31" V 5246 5420 50  0000 R CNN
-F 1 "1N4148" V 5155 5420 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5200 5325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 5200 5500 50  0001 C CNN
-	1    5200 5500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	4600 5350 4600 6000
-Wire Wire Line
-	4600 4700 4600 5350
-Connection ~ 4600 5350
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 60081726
-P 4900 5350
-AR Path="/60081726" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/60081726" Ref="SW31"  Part="1" 
-F 0 "SW31" H 4900 5605 50  0000 C CNN
-F 1 "SW_PUSH" H 4900 5514 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 4900 5350 50  0001 C CNN
-F 3 "" H 4900 5350 50  0000 C CNN
-	1    4900 5350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1100 5650 4200 5650
-Wire Wire Line
-	4200 5650 5200 5650
-Connection ~ 4200 5650
-$Comp
-L Diode:1N4148 D?
-U 1 1 60081807
-P 4200 5500
-AR Path="/60081807" Ref="D?"  Part="1" 
-AR Path="/6006EC30/60081807" Ref="D23"  Part="1" 
-F 0 "D23" V 4246 5420 50  0000 R CNN
-F 1 "1N4148" V 4155 5420 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4200 5325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 4200 5500 50  0001 C CNN
-	1    4200 5500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	3600 5350 3600 6000
-Wire Wire Line
-	3600 4700 3600 5350
-Connection ~ 3600 5350
-$Comp
-L kbd:SW_PUSH SW?
-U 1 1 60081720
-P 3900 5350
-AR Path="/60081720" Ref="SW?"  Part="1" 
-AR Path="/6006EC30/60081720" Ref="SW23"  Part="1" 
-F 0 "SW23" H 3900 5605 50  0000 C CNN
-F 1 "SW_PUSH" H 3900 5514 50  0000 C CNN
-F 2 "kbd:CherryMX_1u" H 3900 5350 50  0001 C CNN
-F 3 "" H 3900 5350 50  0000 C CNN
-	1    3900 5350
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC
