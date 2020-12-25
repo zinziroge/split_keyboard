@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name skb_i2c_lefthand-rescue)(type Legacy)(uri ${KIPRJMOD}/skb_i2c_lefthand-rescue.lib)(options "")(descr ""))
+)
