@@ -27,29 +27,16 @@ $EndComp
 $Comp
 L power:PWR_FLAG #FLG02
 U 1 1 5FDF234E
-P 1400 1600
-F 0 "#FLG02" H 1400 1675 50  0001 C CNN
-F 1 "PWR_FLAG" H 1400 1773 50  0000 C CNN
-F 2 "" H 1400 1600 50  0001 C CNN
-F 3 "~" H 1400 1600 50  0001 C CNN
-	1    1400 1600
+P 2300 1650
+F 0 "#FLG02" H 2300 1725 50  0001 C CNN
+F 1 "PWR_FLAG" H 2300 1823 50  0000 C CNN
+F 2 "" H 2300 1650 50  0001 C CNN
+F 3 "~" H 2300 1650 50  0001 C CNN
+	1    2300 1650
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	1100 1500 1100 1600
-Wire Wire Line
-	1400 1600 1400 1550
-$Comp
-L power:VCC #PWR02
-U 1 1 5FDF234F
-P 1400 1500
-F 0 "#PWR02" H 1400 1350 50  0001 C CNN
-F 1 "VCC" H 1415 1673 50  0000 C CNN
-F 2 "" H 1400 1500 50  0001 C CNN
-F 3 "" H 1400 1500 50  0001 C CNN
-	1    1400 1500
-	1    0    0    -1  
-$EndComp
 Text GLabel 4700 4200 2    50   Input ~ 0
 L_ROW_4
 Text GLabel 4700 4300 2    50   Input ~ 0
@@ -85,12 +72,10 @@ Text GLabel 7000 2400 0    50   Input ~ 0
 L_GND
 Text GLabel 6750 2500 0    50   Input ~ 0
 L_GND
-Text GLabel 6750 2600 0    50   Input ~ 0
+Text GLabel 4850 2600 0    50   Input ~ 0
 L_VCC3P3V
 Wire Wire Line
 	6750 2500 6850 2500
-Wire Wire Line
-	7000 2600 6750 2600
 Wire Wire Line
 	6850 2900 6850 2500
 Connection ~ 6850 2500
@@ -144,23 +129,23 @@ L_ROW_3
 $Comp
 L Connector:Conn_01x04_Male J5
 U 1 1 5FDF2355
-P 7500 4200
-F 0 "J5" H 7608 4481 50  0000 C CNN
-F 1 "Conn_01x04_Male" H 7608 4390 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 7500 4200 50  0001 C CNN
-F 3 "~" H 7500 4200 50  0001 C CNN
-	1    7500 4200
+P 7500 3850
+F 0 "J5" H 7608 4131 50  0000 C CNN
+F 1 "Conn_01x04_Male" H 7608 4040 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 7500 3850 50  0001 C CNN
+F 3 "~" H 7500 3850 50  0001 C CNN
+	1    7500 3850
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x05_Male J2
 U 1 1 5FDF2356
-P 6650 4300
-F 0 "J2" H 6758 4681 50  0000 C CNN
-F 1 "Conn_01x05_Male" H 6758 4590 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 6650 4300 50  0001 C CNN
-F 3 "~" H 6650 4300 50  0001 C CNN
-	1    6650 4300
+P 6650 3950
+F 0 "J2" H 6758 4331 50  0000 C CNN
+F 1 "Conn_01x05_Male" H 6758 4240 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 6650 3950 50  0001 C CNN
+F 3 "~" H 6650 3950 50  0001 C CNN
+	1    6650 3950
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -220,7 +205,7 @@ Wire Wire Line
 	2750 3100 3000 3100
 Text Notes 6350 4800 2    50   ~ 0
 GROVE
-Text Notes 6400 3800 2    50   ~ 0
+Text Notes 6400 3650 2    50   ~ 0
 M5 ATOM
 Text GLabel 7250 5250 2    50   Input ~ 0
 L_GND
@@ -230,23 +215,23 @@ Text GLabel 7250 5050 2    50   Input ~ 0
 L_SDA_GROVE
 Text GLabel 7250 4950 2    50   Input ~ 0
 L_SCL_GROVE
-Text GLabel 6850 4100 2    50   Input ~ 0
+Text GLabel 6850 3750 2    50   Input ~ 0
 L_VCC3P3V
-Text GLabel 6850 4200 2    50   Input ~ 0
+Text GLabel 6850 3850 2    50   Input ~ 0
 L_G22
-Text GLabel 6850 4300 2    50   Input ~ 0
+Text GLabel 6850 3950 2    50   Input ~ 0
 L_G19
-Text GLabel 6850 4400 2    50   Input ~ 0
+Text GLabel 6850 4050 2    50   Input ~ 0
 L_G23
-Text GLabel 6850 4500 2    50   Input ~ 0
+Text GLabel 6850 4150 2    50   Input ~ 0
 L_G33
-Text GLabel 7700 4100 2    50   Input ~ 0
+Text GLabel 7700 3750 2    50   Input ~ 0
 L_G21
-Text GLabel 7700 4200 2    50   Input ~ 0
+Text GLabel 7700 3850 2    50   Input ~ 0
 L_G25
-Text GLabel 7700 4300 2    50   Input ~ 0
+Text GLabel 7700 3950 2    50   Input ~ 0
 L_VCC5V
-Text GLabel 7700 4400 2    50   Input ~ 0
+Text GLabel 7700 4050 2    50   Input ~ 0
 L_GND
 $Comp
 L kbd:MJ-4PP-9 J1
@@ -304,17 +289,6 @@ Wire Wire Line
 Connection ~ 2500 6000
 Wire Wire Line
 	2500 6000 3050 6000
-$Comp
-L power:VCC #PWR03
-U 1 1 5FDA1357
-P 1600 4800
-F 0 "#PWR03" H 1600 4650 50  0001 C CNN
-F 1 "VCC" H 1615 4973 50  0000 C CNN
-F 2 "" H 1600 4800 50  0001 C CNN
-F 3 "" H 1600 4800 50  0001 C CNN
-	1    1600 4800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1600 4875 1600 5550
 Connection ~ 1600 4875
@@ -444,48 +418,9 @@ Wire Wire Line
 Text GLabel 2400 1550 2    50   Input ~ 0
 L_VCC5V
 Wire Wire Line
-	1800 1550 1400 1550
-Connection ~ 1400 1550
-Wire Wire Line
-	1400 1550 1400 1500
-Wire Wire Line
 	2100 4875 1600 4875
 Wire Wire Line
 	1600 4800 1600 4875
-$Comp
-L power:GND #PWR06
-U 1 1 5FFCB1F4
-P 9300 4900
-F 0 "#PWR06" H 9300 4650 50  0001 C CNN
-F 1 "GND" H 9305 4727 50  0000 C CNN
-F 2 "" H 9300 4900 50  0001 C CNN
-F 3 "" H 9300 4900 50  0001 C CNN
-	1    9300 4900
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR05
-U 1 1 5FFCBBCC
-P 4000 6000
-F 0 "#PWR05" H 4000 5750 50  0001 C CNN
-F 1 "GND" H 4005 5827 50  0000 C CNN
-F 2 "" H 4000 6000 50  0001 C CNN
-F 3 "" H 4000 6000 50  0001 C CNN
-	1    4000 6000
-	1    0    0    -1  
-$EndComp
-Connection ~ 4000 6000
-$Comp
-L power:GND #PWR01
-U 1 1 5FFCC19A
-P 1100 1600
-F 0 "#PWR01" H 1100 1350 50  0001 C CNN
-F 1 "GND" H 1105 1427 50  0000 C CNN
-F 2 "" H 1100 1600 50  0001 C CNN
-F 3 "" H 1100 1600 50  0001 C CNN
-	1    1100 1600
-	1    0    0    -1  
-$EndComp
 $Sheet
 S 3025 1000 1225 1225
 U 5FDF19E6
@@ -519,18 +454,121 @@ $EndComp
 $Comp
 L Switch:SW_DIP_x01 SW84
 U 1 1 5FEA8D0D
-P 2100 1550
-F 0 "SW84" H 2100 1817 50  0000 C CNN
-F 1 "SW_DIP_x01" H 2100 1726 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile" H 2100 1550 50  0001 C CNN
-F 3 "~" H 2100 1550 50  0001 C CNN
-	1    2100 1550
+P 5150 2600
+F 0 "SW84" H 5150 2867 50  0000 C CNN
+F 1 "SW_DIP_x01" H 5150 2776 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile" H 5150 2600 50  0001 C CNN
+F 3 "~" H 5150 2600 50  0001 C CNN
+	1    5150 2600
 	1    0    0    -1  
 $EndComp
 Text GLabel 4000 3100 2    50   Input ~ 0
 L_VCC5V
 Text GLabel 10300 3525 2    50   Input ~ 0
 L_VCC5V
-Text GLabel 1100 1525 0    50   Input ~ 0
+Text GLabel 1100 1600 0    50   Input ~ 0
+L_GND
+$Comp
+L Device:LED D84
+U 1 1 5FE6DA3C
+P 5625 3850
+F 0 "D84" H 5618 4067 50  0000 C CNN
+F 1 "LED" H 5618 3976 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 5625 3850 50  0001 C CNN
+F 3 "~" H 5625 3850 50  0001 C CNN
+	1    5625 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3850 5475 3850
+$Comp
+L Device:LED D85
+U 1 1 5FE73653
+P 5625 4225
+F 0 "D85" H 5618 4442 50  0000 C CNN
+F 1 "LED" H 5618 4351 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 5625 4225 50  0001 C CNN
+F 3 "~" H 5625 4225 50  0001 C CNN
+	1    5625 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 5FE73A2B
+P 6225 4225
+F 0 "R6" H 6295 4271 50  0000 L CNN
+F 1 "R" H 6295 4180 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 6155 4225 50  0001 C CNN
+F 3 "~" H 6225 4225 50  0001 C CNN
+	1    6225 4225
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5300 4225 5475 4225
+Wire Wire Line
+	5300 4350 5300 4225
+Connection ~ 5300 4225
+Text GLabel 1600 4800 2    50   Input ~ 0
+L_VCC5V
+Wire Wire Line
+	2300 1650 2300 1550
+Wire Wire Line
+	2300 1550 2400 1550
+$Comp
+L Connector_Generic:Conn_01x03 J7
+U 1 1 5FF122B1
+P 5975 3650
+F 0 "J7" V 5939 3462 50  0000 R CNN
+F 1 "Conn_01x03" V 5848 3462 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5975 3650 50  0001 C CNN
+F 3 "~" H 5975 3650 50  0001 C CNN
+	1    5975 3650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x03 J8
+U 1 1 5FF1324D
+P 5975 4425
+F 0 "J8" V 5847 4605 50  0000 L CNN
+F 1 "Conn_01x03" V 5938 4605 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5975 4425 50  0001 C CNN
+F 3 "~" H 5975 4425 50  0001 C CNN
+	1    5975 4425
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5FE6EFDE
+P 6225 3850
+F 0 "R5" H 6295 3896 50  0000 L CNN
+F 1 "R" H 6295 3805 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 6155 3850 50  0001 C CNN
+F 3 "~" H 6225 3850 50  0001 C CNN
+	1    6225 3850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5775 3850 5875 3850
+Wire Wire Line
+	5775 4225 5875 4225
+Wire Wire Line
+	5300 3850 5300 4225
+Wire Wire Line
+	6375 3850 6850 3850
+Wire Wire Line
+	6375 4225 6850 4225
+Wire Wire Line
+	6850 4225 6850 4150
+Wire Wire Line
+	6575 2600 7000 2600
+Text GLabel 6575 2600 0    50   Input ~ 0
+L_VCC3P3V_T
+Text GLabel 5450 2600 2    50   Input ~ 0
+L_VCC3P3V_T
+Text GLabel 4000 6000 2    50   Input ~ 0
+L_GND
+Text GLabel 9300 4900 2    50   Input ~ 0
+L_GND
+Text GLabel 5300 4350 2    50   Input ~ 0
 L_GND
 $EndSCHEMATC
