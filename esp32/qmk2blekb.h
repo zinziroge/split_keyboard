@@ -62,10 +62,10 @@
 /* Japanese specific */
 #define KC_ZKHK KC_GRAVE
 #define KC_RO KC_INT1
-#define KC_KANA KC_INT2
 #define KC_JYEN KC_INT3
-#define KC_HENK KC_INT4
 #define KC_MHEN KC_INT5
+#define KC_HENK KC_INT4
+#define KC_KANA KC_INT2
 
 // keycode
 // 0x00~0x7F

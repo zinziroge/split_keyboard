@@ -33,4 +33,11 @@
 
 * keymap -t1-> ascii -t2-> hid keycode
   * t2は code + shift modifier
-  * 
+
+* BleKeyboard のmethodで使う変数がprivateなので、継承してBleKeyboardJPとして使うのは難しい。
+* 対応策
+  1. BleKeyboard.c をコピーして BleKeyboardJP.c を作って書き換える
+  2. BleKeyboard のprivate変数をprotectedに変更する
+  3. keymap の keycodeはBleKeyboardに合わせて、press() methodを一部書き換える
+  4. mixinする。上手く結局大変な気がする。
+  
