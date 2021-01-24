@@ -29,7 +29,7 @@
 #define IS_ATOM_ECHO            2
 #define BOARD   IS_ESP32
 
-BleKeyboardJP bleKeyboard("skb81_trainee");
+BleKeyboardJP bleKeyboard("skb81");
 extern int col_pins[];
 extern int row_pins[];
 extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
@@ -204,9 +204,9 @@ void loop_paralle(void)
 {
     static uint16_t prev_pressed_keycode = 0;
     static uint32_t prev_t = millis();
+    static uint8_t prior_key = 0;
 
-    if (1){
-    //if (bleKeyboard.isConnected()) {
+    if (bleKeyboard.isConnected()) {
         int c, r;
         int sw_val;
 
@@ -224,6 +224,7 @@ void loop_paralle(void)
                         ret = bleKeyboard.press_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
                     } else {
                         if(cur_t - prev_t > KEY_INTERVAL_MIN_MS) {
+                            //keycode = prior_key++;
                             ret = bleKeyboard.write_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
                             prev_t = cur_t;
                         }

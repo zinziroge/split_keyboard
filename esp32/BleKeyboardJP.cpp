@@ -21,6 +21,8 @@ size_t BleKeyboardJP::press_raw(uint8_t k)
 	uint8_t i;
 
 	if (k >= 0xE0) {	// it's a modifier key
+		_keyReport.modifiers |= (1<<(k-0xE0));
+		k = 0;
 	}else if (k >= 0xB0) {	// it's a special key
     }else{ // it's a printing key
     }
@@ -49,6 +51,13 @@ size_t BleKeyboardJP::press_raw(uint8_t k)
 size_t BleKeyboardJP::release_raw(uint8_t k)
 {
 	uint8_t i;
+
+	if (k >= 0xE0) {	// it's a modifier key
+		_keyReport.modifiers &= ~(1<<(k-0xE0));
+		k = 0;
+	}else if (k >= 0xB0) {	// it's a special key
+    }else{ // it's a printing key
+    }
 
 	// Test the key report to see if k is present.  Clear it if it exists.
 	// Check all positions in case the key is present more than once (which it shouldn't be)
