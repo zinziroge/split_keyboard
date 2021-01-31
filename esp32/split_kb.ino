@@ -299,12 +299,12 @@ void loop_I2C_read(void)
         int c, r;
         int sw_val;
 
-        for (c = 0; c < 2; c++) { // output
-            i2c_digitalWrite(c, LOW);
-            for (r = 0; r < 2; r++) { // input
+       for (r = 0; r < 2; r++) { // output
+            i2c_digitalWrite(r, LOW);
+            for (c = 0; c < 2; c++) { // input
                 delay(KEY_SCAN_WAIT_MS);
                 uint32_t cur_t = millis();
-                sw_val = i2c_digitalRead(r);
+                sw_val = i2c_digitalRead(c);
                 uint16_t keycode = keymaps[0][r][c];
                 size_t ret;
 
@@ -318,7 +318,7 @@ void loop_I2C_read(void)
                     Serial.println(buf);
                 }
             } // r
-            i2c_digitalWrite(c, HIGH);
+            i2c_digitalWrite(r, HIGH);
         } // c
     }
 }
