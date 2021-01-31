@@ -13,7 +13,8 @@
 #include "keysw.h"
 
 //http://kats-eye.net/info/2018/11/07/mcp23017-esp/
-#define MCP23017_ADDR           0x20     //0x20 & 0x07. MCP23017のアドレス　A0,A1,A2=1,1,1
+#define MCP23017_ADDR_L           0x20     //0x20 & 0x07. MCP23017のアドレス　A2,A1,A0=0,0,0
+#define MCP23017_ADDR_R           0x21     //0x20 & 0x07. MCP23017のアドレス　A2,A1,A1=0,0,1
 // GPIO A
 #define MCP23017_IODIR_A_ADR     0x00
 #define MCP23017_GPPU_A_ADR      0x0C
@@ -23,11 +24,11 @@
 #define MCP23017_GPPU_B_ADR      0x0D
 #define MCP23017_GPIO_B_ADR      0x13
 
-#define DOES_USE_I2C            0
+#define DOES_USE_I2C            1
 #define IS_ESP32                0
 #define IS_M5_STACK_CORE        1
 #define IS_ATOM_ECHO            2
-#define BOARD   IS_ESP32
+#define BOARD   IS_ATOM_ECHO
 
 BleKeyboardJP bleKeyboard("skb81");
 extern int col_pins[];
@@ -38,18 +39,18 @@ char buf[128];
  //http://kats-eye.net/info/2018/11/07/mcp23017-esp/
 void i2c_write_reg(byte dvc_adrs, uint8_t reg, uint8_t value)
 {
-    Serial.println("ic2_write_reg()");
-    Serial.println(reg);
-    Serial.println(value);
+    //Serial.println("ic2_write_reg()");
+    //Serial.println(reg);
+    //Serial.println(value);
     Wire.beginTransmission(dvc_adrs);             // デバイス指定、通信開始
     Wire.write(reg);                     // レジスタ指定
     Wire.write(value);                 // データ書込
     byte ret = Wire.endTransmission();                       // 送信完了
-    if(ret==0) {
-        Serial.println("i2c write reg successed");
-    } else {
-        Serial.println("i2c write reg failed");
-    }
+    //if(0==ret) {
+    //    Serial.println("i2c write reg successed");
+    //} else {
+    //    Serial.println("i2c write reg failed");
+    //}
 }
 
 // 指定レジスタからデータ読み出し
@@ -58,11 +59,11 @@ uint8_t i2c_read_reg(int32_t dvc_adrs, uint8_t reg)
     Wire.beginTransmission(dvc_adrs);             // 送信処理開始
     Wire.write(reg);                              // レジスタ指定
     byte ret = Wire.endTransmission(false);                  // 送信完了(コネクション維持)
-    if(ret==0) {
-        Serial.println("i2c read reg successed");
-    } else {
-        Serial.println("i2c read reg failed");
-    }
+    //if(0==ret) {
+    //    Serial.println("i2c read reg successed");
+    //} else {
+    //    Serial.println("i2c read reg failed");
+    //}
     Wire.requestFrom(dvc_adrs , 1);               // 1byteデータに要求
 
     if (!Wire.available()){
@@ -72,17 +73,39 @@ uint8_t i2c_read_reg(int32_t dvc_adrs, uint8_t reg)
     return (Wire.read());                         // 1byteデータ
 }
 
+/**
+  @brief To set only c th bit LOW or HIGH. (read, modify, and write)
+*/
 uint8_t i2c_digitalWrite(uint8_t c, uint8_t val)
 {
-    i2c_write_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR, (val & 0x1)<<c);
+    val &= 0x1; // LOW or HIGH
+
+    if(c < 6) {
+        // left hand
+        uint8_t cur_val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
+        i2c_write_reg(
+            MCP23017_ADDR_L, 
+            MCP23017_GPIO_B_ADR, 
+            (cur_val & ~(1 << c)) | (val << c));
+        //i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR, 0xFF);
+    } else if(c < (6 + 8)) {
+        // right hand
+        i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0xFF);
+        ////i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR, (val & 0x1) << (c-6));
+    } else {
+    }
 }
 
 uint8_t i2c_digitalRead(uint8_t r)
 {
-    uint8_t val = i2c_read_reg(MCP23017_ADDR, MCP23017_GPIO_A_ADR);
-    Serial.print("I2C read: ");
-    Serial.println(val);
-    return val >> (r - 4);
+    uint8_t val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_A_ADR);
+
+    sprintf(buf, "I2C read: r=%d, val=0x%x, sw=%d,",
+        r, val, (val>>r) &0x1);
+    //Serial.print(buf);
+    //Serial.println(val, BIN);
+
+    return (val >> r) & 0x1;
 }
 
 void print_keymap(void)
@@ -100,7 +123,12 @@ void print_keymap(void)
 //
 void setup(void)
 {
+
+#if DOES_USE_I2C==0
     int r, c;
+
+    Serial.println("use parallel gpio");
+
     // cols
     for (c = 0; c < MATRIX_COLS; c++) {
         pinMode(col_pins[c], OUTPUT);
@@ -114,18 +142,12 @@ void setup(void)
         pinMode(row_pins[r], INPUT_PULLUP); // pull up by internal register.
     }
 
-    // serial for debug
-    Serial.begin(115200);
-    Serial.println("start serial.");
-    print_keymap();
+#else /* DOES_USE_I2C */
 
-    // ble
-    bleKeyboard.begin();
-    Serial.println(bleKeyboard.isConnected());
-    //bleKeyboard.releaseAll();
+    Serial.println("use I2C");
 
-#if DOSE_USE_I2C
 #if BOARD == IS_ESP32
+    Serial.println("ESP32 Devkit");
     // I2C
     //Wire.begin();//Wire.begin(SDA, SCL)
     //https://asukiaaa.blogspot.com/2020/03/arduinoi2c.html
@@ -134,23 +156,44 @@ void setup(void)
     pinMode(13, INPUT);
     pinMode(14, INPUT);
 #elif BOARD == IS_ATOM_ECHO
+    Serial.println("ATOM ECHO");
     // pico, M5 Atom Echo
-    //https://wiki.seeedstudio.com/Grove_System/
+    // https://docs.m5stack.com/#/en/core/atom_lite
+    // https://wiki.seeedstudio.com/Grove_System/
+    // max of serial speed is 115200 bps.
     Wire.begin(26, 32);//Wire.begin(SDA, SCL), yello=SCL, white=SDA
     pinMode(26, INPUT);
     pinMode(32, INPUT);
 #elif BOARD == IS_M5_STACK_CORE
+    Serial.println("M5Stack Core");
     //m5 stack core
-    //Wire.begin(21, 22);//Wire.begin(SDA, SCL)
-    //pinMode(21, INPUT);
-    //pinMode(22, INPUT);
-    Wire.setClock(10000);// 100kbits/sec
-    i2c_write_reg(MCP23017_ADDR, MCP23017_IODIR_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力設定, row
-    i2c_write_reg(MCP23017_ADDR, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力ﾌﾟﾙｱｯﾌﾟ設定
-    i2c_write_reg(MCP23017_ADDR, MCP23017_IODIR_B_ADR, 0x00);     // DVC00 I/O-PortB 出力設定, col
-    i2c_write_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR, 0x00);     // DVC00 I/O-PortB 全OFF
+    Wire.begin(21, 22);//Wire.begin(SDA, SCL)
+    pinMode(21, INPUT);
+    pinMode(22, INPUT);
 #endif /* BOARD */
-#endif /* DOSE_USE_I2C */
+
+    // Wire(I2C)
+    Wire.setClock(10000);// 100kbits/sec
+    //// left hand
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_IODIR_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力設定, col
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力pullup設定
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_IODIR_B_ADR, 0x00);     // DVC00 I/O-PortB 出力設定, row
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0xFF);     // DVC00 I/O-PortB all High
+
+#endif /* DOES_USE_I2C */
+
+    // serial for debug
+    Serial.begin(115200);
+    Serial.println("start serial.");
+    print_keymap();
+
+    // ble
+    //bleKeyboard.begin();
+    //Serial.println(bleKeyboard.isConnected());
+    //bleKeyboard.releaseAll();
+
+    // check
+    loop_find_I2C_device();
 }
 
 bool is_ascii(const uint16_t keycode)
@@ -175,8 +218,8 @@ bool is_modifier(const uint16_t keycode)
 void loop(void)
 {
     //loop_test_keycode();
-    loop_paralle();
-    //loop_I2C_read();
+    //loop_parallel();
+    loop_I2C_read();
     //loop_find_I2C_device();
     //loop_test_I2C();
 }
@@ -200,7 +243,7 @@ void loop_test_keycode(void)
 #endif
 }
 
-void loop_paralle(void)
+void loop_parallel(void)
 {
     static uint16_t prev_pressed_keycode = 0;
     static uint32_t prev_t = millis();
@@ -249,22 +292,28 @@ void loop_I2C_read(void)
 {
     static uint16_t prev_pressed_keycode = 0;
     static uint32_t prev_t = millis();
+    static uint8_t prior_key = 0;
 
-    if (1){
+    //if (bleKeyboard.isConnected()) {
+    if (1) {
         int c, r;
         int sw_val;
 
-        for (c = 0; c < 1; c++) { // output
+        for (c = 0; c < 2; c++) { // output
             i2c_digitalWrite(c, LOW);
-            for (r = 4; r < 5; r++) { // input
+            for (r = 0; r < 2; r++) { // input
                 delay(KEY_SCAN_WAIT_MS);
                 uint32_t cur_t = millis();
                 sw_val = i2c_digitalRead(r);
                 uint16_t keycode = keymaps[0][r][c];
-                size_t ret = 0;
+                size_t ret;
 
                 if (sw_val == 0) { // sw is pushed
-                    sprintf(buf, "(%d, %d)=%d,0x%02x,'%c', %d",
+                    ret = bleKeyboard.write_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+
+                    prev_pressed_keycode = keycode;
+
+                    sprintf(buf, "(%d, %d)=%d, 0x%02x, '%c', %d",
                         r, c, sw_val, keycode, (char)(keycode & 0xFF), (int)ret);
                     Serial.println(buf);
                 }
@@ -283,7 +332,7 @@ void loop_find_I2C_device()
   Serial.println("Scanning...");
 
   nDevices = 0;
-  for(address = 1; address < 127; address++ ) 
+  for(address = 0; address < 127; address++ ) 
   {
     // The i2c_scanner uses the return value of
     // the Write.endTransmisstion to see if
@@ -321,17 +370,17 @@ void loop_test_I2C(void)
 {
     Serial.println("\nloop start");
 
-    i2c_write_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR, 0x0F);
-    uint8_t val = i2c_read_reg(MCP23017_ADDR, MCP23017_GPIO_A_ADR);
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0x0F);
+    uint8_t val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_A_ADR);
     Serial.println(val, HEX);
-    //val = i2c_read_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR);
+    //val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
     //Serial.println(val, HEX);
     delay(10);           // wait 5 seconds for next scan
 
-    i2c_write_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR, 0xF0);
-    val = i2c_read_reg(MCP23017_ADDR, MCP23017_GPIO_A_ADR);
+    i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0xF0);
+    val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_A_ADR);
     Serial.println(val, HEX);
-    //val = i2c_read_reg(MCP23017_ADDR, MCP23017_GPIO_B_ADR);
+    //val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
     //Serial.println(val, HEX);
     delay(10);           // wait 5 seconds for next scan
 }
