@@ -752,7 +752,7 @@ Text GLabel 6600 1050 1    50   Input ~ 0
 L_COL_5
 Connection ~ 3600 2100
 Text Notes 850  1000 0    50   ~ 0
-row2col
+col2row
 $Comp
 L kbd:SW_PUSH SW?
 U 1 1 600816A4
@@ -1215,4 +1215,8 @@ Wire Wire Line
 	1600 4700 1600 6000
 Wire Wire Line
 	2600 4700 2600 6000
+Text Notes 1525 625  0    50   ~ 0
+input
+Text Notes 625  1625 0    50   ~ 0
+output
 $EndSCHEMATC

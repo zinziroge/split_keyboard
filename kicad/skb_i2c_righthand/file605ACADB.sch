@@ -701,7 +701,7 @@ COL_4
 Text GLabel 6925 1200 1    50   Input ~ 0
 COL_5
 Text Notes 1175 1150 0    50   ~ 0
-row2col
+col2row
 $Comp
 L kbd:SW_PUSH SW?
 U 1 1 605DD192
@@ -1765,4 +1765,8 @@ Wire Wire Line
 	3525 1900 4525 1900
 Wire Wire Line
 	8925 2900 8925 6150
+Text Notes 1775 825  0    50   ~ 0
+input
+Text Notes 975  1650 0    50   ~ 0
+output
 $EndSCHEMATC
