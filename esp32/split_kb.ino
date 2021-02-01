@@ -74,38 +74,52 @@ uint8_t i2c_read_reg(int32_t dvc_adrs, uint8_t reg)
 }
 
 /**
-  @brief To set only c th bit LOW or HIGH. (read, modify, and write)
+  @brief To set only r th bit LOW or HIGH. (read, modify, and write)
 */
-uint8_t i2c_digitalWrite(uint8_t c, uint8_t val)
+uint8_t i2c_digitalWrite(uint8_t r, uint8_t val)
 {
     val &= 0x1; // LOW or HIGH
 
-    if(c < 6) {
-        // left hand
-        uint8_t cur_val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
-        i2c_write_reg(
-            MCP23017_ADDR_L, 
-            MCP23017_GPIO_B_ADR, 
-            (cur_val & ~(1 << c)) | (val << c));
-        //i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR, 0xFF);
-    } else if(c < (6 + 8)) {
-        // right hand
-        i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0xFF);
-        ////i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR, (val & 0x1) << (c-6));
-    } else {
-    }
+    uint8_t cur_val;
+
+    // left hand
+    cur_val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
+    i2c_write_reg(
+        MCP23017_ADDR_L, 
+        MCP23017_GPIO_B_ADR, 
+        (cur_val & ~(1 << r)) | (val << r));
+
+    // right hand
+    cur_val = i2c_read_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR);
+    i2c_write_reg(
+        MCP23017_ADDR_R, 
+        MCP23017_GPIO_B_ADR, 
+        (cur_val & ~(1 << r)) | (val << r));
 }
 
-uint8_t i2c_digitalRead(uint8_t r)
+uint8_t i2c_digitalRead(uint8_t c)
 {
-    uint8_t val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_A_ADR);
+    uint8_t val;
 
-    sprintf(buf, "I2C read: r=%d, val=0x%x, sw=%d,",
-        r, val, (val>>r) &0x1);
+    if(c < 6) {
+        // left hand
+        val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_A_ADR);
+    } else if(c < (6 + 8)) {
+        // right hand
+        val = i2c_read_reg(MCP23017_ADDR_R, MCP23017_GPIO_A_ADR);
+        c -= 6;
+    } else { // c==14
+        // right hand
+        val = i2c_read_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR);
+        c = 7; // GPIO_B[7]
+    }
+
+    sprintf(buf, "I2C read: c=%d, val=0x%x, sw=%d,",
+        c, val, (val>>c) &0x1);
     //Serial.print(buf);
     //Serial.println(val, BIN);
 
-    return (val >> r) & 0x1;
+    return (val >> c) & 0x1;
 }
 
 void print_keymap(void)
@@ -179,6 +193,12 @@ void setup(void)
     i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力pullup設定
     i2c_write_reg(MCP23017_ADDR_L, MCP23017_IODIR_B_ADR, 0x00);     // DVC00 I/O-PortB 出力設定, row
     i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR, 0xFF);     // DVC00 I/O-PortB all High
+    //// right hand
+    i2c_write_reg(MCP23017_ADDR_R, MCP23017_IODIR_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力設定, col
+    i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力pullup設定
+    i2c_write_reg(MCP23017_ADDR_R, MCP23017_IODIR_B_ADR, 0x80);     // DVC00 I/O-PortB 出力設定, row. but GPB7 is col_8 and input.
+    i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPPU_B_ADR, 0x80);     // DVC00 I/O-PortB GPB7 入力pullup設定
+    i2c_write_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR, 0x7F);     // DVC00 I/O-PortB all High without GPB7
 
 #endif /* DOES_USE_I2C */
 
@@ -299,9 +319,9 @@ void loop_I2C_read(void)
         int c, r;
         int sw_val;
 
-       for (r = 0; r < 2; r++) { // output
+       for (r = 0; r < 6; r++) { // output
             i2c_digitalWrite(r, LOW);
-            for (c = 0; c < 2; c++) { // input
+            for (c = 0; c < 6+8; c++) { // input
                 delay(KEY_SCAN_WAIT_MS);
                 uint32_t cur_t = millis();
                 sw_val = i2c_digitalRead(c);
@@ -317,9 +337,9 @@ void loop_I2C_read(void)
                         r, c, sw_val, keycode, (char)(keycode & 0xFF), (int)ret);
                     Serial.println(buf);
                 }
-            } // r
+            } // c
             i2c_digitalWrite(r, HIGH);
-        } // c
+        } // r
     }
 }
 
