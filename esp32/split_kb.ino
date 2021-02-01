@@ -33,7 +33,7 @@
 BleKeyboardJP bleKeyboard("skb81");
 extern int col_pins[];
 extern int row_pins[];
-extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS_I2C][MATRIX_COLS_I2C];
+extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
 char buf[128];
 
  //http://kats-eye.net/info/2018/11/07/mcp23017-esp/
@@ -83,14 +83,14 @@ uint8_t i2c_digitalWrite(uint8_t r, uint8_t val)
     uint8_t cur_val;
 
     // left hand
-    cur_val = i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
+    cur_val = 0xFF; //i2c_read_reg(MCP23017_ADDR_L, MCP23017_GPIO_B_ADR);
     i2c_write_reg(
         MCP23017_ADDR_L, 
         MCP23017_GPIO_B_ADR, 
         (cur_val & ~(1 << r)) | (val << r));
 
     // right hand
-    cur_val = i2c_read_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR);
+    cur_val = 0xFF; //i2c_read_reg(MCP23017_ADDR_R, MCP23017_GPIO_B_ADR);
     i2c_write_reg(
         MCP23017_ADDR_R, 
         MCP23017_GPIO_B_ADR, 
@@ -114,8 +114,8 @@ uint8_t i2c_digitalRead(uint8_t c)
         c = 7; // GPIO_B[7]
     }
 
-    sprintf(buf, "I2C read: c=%d, val=0x%x, sw=%d,",
-        c, val, (val>>c) &0x1);
+    //sprintf(buf, "I2C read: c=%d, val=0x%x, sw=%d,",
+    //    c, val, (val>>c) &0x1);
     //Serial.print(buf);
     //Serial.println(val, BIN);
 
@@ -187,7 +187,7 @@ void setup(void)
 #endif /* BOARD */
 
     // Wire(I2C)
-    Wire.setClock(10000);// 100kbits/sec
+    Wire.setClock(100000);// 100kbits/sec
     //// left hand
     i2c_write_reg(MCP23017_ADDR_L, MCP23017_IODIR_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力設定, col
     i2c_write_reg(MCP23017_ADDR_L, MCP23017_GPPU_A_ADR, 0xFF);     // DVC00 I/O-PortA 入力pullup設定
@@ -217,9 +217,10 @@ void setup(void)
 
     //
     while(!bleKeyboard.isConnected()) {
-        Serial.println("waiting to connect BLE.");
+        Serial.println("waiting for connecting to BLE.");
         delay(1000);
     }
+    Serial.println("successfully connecting to BLE.");
 }
 
 bool is_ascii(const uint16_t keycode)
@@ -325,9 +326,9 @@ void loop_I2C_read(void)
         int c, r;
         int sw_val;
 
-       for (r = 0; r < MATRIX_ROWS_I2C; r++) { // output
+       for (r = 0; r < MATRIX_ROWS; r++) { // output
             i2c_digitalWrite(r, LOW);
-            for (c = 0; c < MATRIX_COLS_I2C; c++) { // input
+            for (c = 0; c < MATRIX_COLS; c++) { // input
                 delay(KEY_SCAN_WAIT_MS);
                 uint32_t cur_t = millis();
                 sw_val = i2c_digitalRead(c);
@@ -336,7 +337,7 @@ void loop_I2C_read(void)
 
                 if (sw_val == 0) { // sw is pushed
                     if(is_modifier(keycode)) {
-                        ret = bleKeyboard.write_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+                        ret = bleKeyboard.press_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
                     } else {
                         if(cur_t - prev_t > KEY_INTERVAL_MIN_MS) {
                             //keycode = prior_key++;
@@ -348,8 +349,8 @@ void loop_I2C_read(void)
 
                     //sprintf(buf, "(%d, %d)=%d, 0x%02x, '%c', %d",
                     //    r, c, sw_val, keycode, (char)(keycode & 0xFF), (int)ret);
-                    sprintf(buf, "(%d, %d)=%d, ", r, c, sw_val);
-                    Serial.println(buf);
+                    //sprintf(buf, "(%d, %d)=%d, ", r, c, sw_val);
+                    //Serial.println(buf);
                 } else {
                     if(is_modifier(keycode)) {
                         bleKeyboard.release_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される

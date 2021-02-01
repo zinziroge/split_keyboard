@@ -4,11 +4,21 @@
 
 #define PROGMEM
 
+#define KB_TYPE_IS__PARA    0
+#define KB_TYPE_IS__I2C     1
+
+#define KB_TYPE_IS  KB_TYPE_IS__I2C
+
+#if KB_TYPE_IS == KB_TYPE_IS__PARA
+
 #define MATRIX_ROWS 9
 #define MATRIX_COLS 9
 
-#define MATRIX_ROWS_I2C 6
-#define MATRIX_COLS_I2C (6+9) // left=6, right=9
+#elif KB_TYPE_IS == KB_TYPE_IS__I2C
+#define MATRIX_ROWS 6
+#define MATRIX_COLS (6+9) // left=6, right=9
+
+#endif /* KB_TYPE_IS */
 
 #define PIN_COL_0 4
 #define PIN_COL_1 16
@@ -30,8 +40,9 @@
 #define PIN_ROW_7 26
 #define PIN_ROW_8 27
 
-#define KEY_SCAN_WAIT_MS      1
-#define KEY_INTERVAL_MIN_MS    100 // same key
+
+#define KEY_SCAN_WAIT_MS      0
+#define KEY_INTERVAL_MIN_MS    0 // same key
 
 /*
   KC_NO: no action
