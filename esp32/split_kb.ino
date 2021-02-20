@@ -317,49 +317,90 @@ void loop_parallel(void)
 
 void loop_I2C_read(void) 
 {
+    if (! bleKeyboard.isConnected())
+        return;
+
     static uint16_t prev_pressed_keycode = 0;
-    static uint32_t prev_t = millis();
-    static uint8_t prior_key = 0;
+    static uint32_t last_pressed_t = millis();
+    static uint32_t cnt_same_key_pressed = 0;
 
-    if (bleKeyboard.isConnected()) {
-    //if (1) {
-        int c, r;
-        int sw_val;
+    int c, r;
+    uint32_t cur_t = millis();
+    int normal_key_was_pressed = 0;
 
-       for (r = 0; r < MATRIX_ROWS; r++) { // output
-            i2c_digitalWrite(r, LOW);
-            for (c = 0; c < MATRIX_COLS; c++) { // input
-                delay(KEY_SCAN_WAIT_MS);
-                uint32_t cur_t = millis();
-                sw_val = i2c_digitalRead(c);
-                uint16_t keycode = keymaps[0][r][c];
-                size_t ret;
+    // 所定時間キー入力がなかったらリセット
+    //if(cur_t - last_pressed_t > KEY_INTERVAL_MIN_MS) {
+    //    prev_pressed_keycode = 0;
+    //}
 
-                if (sw_val == 0) { // sw is pushed
-                    if(is_modifier(keycode)) {
-                        ret = bleKeyboard.press_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
-                    } else {
-                        if(cur_t - prev_t > KEY_INTERVAL_MIN_MS) {
-                            //keycode = prior_key++;
-                            ret = bleKeyboard.write_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
-                            prev_t = cur_t;
-                        }
-                    }
-                    prev_pressed_keycode = keycode;
+    for (r = 0; r < MATRIX_ROWS; r++) { // output
+        i2c_digitalWrite(r, LOW);
+        for (c = 0; c < MATRIX_COLS; c++) { // input
+            delay(KEY_SCAN_WAIT_MS);
+            int sw_val = i2c_digitalRead(c);
+            uint16_t keycode = keymaps[0][r][c];
+            size_t ret;
 
-                    //sprintf(buf, "(%d, %d)=%d, 0x%02x, '%c', %d",
-                    //    r, c, sw_val, keycode, (char)(keycode & 0xFF), (int)ret);
-                    //sprintf(buf, "(%d, %d)=%d, ", r, c, sw_val);
-                    //Serial.println(buf);
+            if (0 == sw_val) { // sw is pushed
+                if(is_modifier(keycode)) {
+                    ret = bleKeyboard.press_raw(keycode);
                 } else {
-                    if(is_modifier(keycode)) {
-                        bleKeyboard.release_raw(keycode); // keycode < 128 はascii code, それ以上は特別対応される
+                    sprintf(buf, "pre : %d, %d, %d, %d",
+                        keycode, 
+                        prev_pressed_keycode, 
+                        cnt_same_key_pressed,
+                        cur_t - last_pressed_t );
+                    Serial.println(buf);
+                    if(keycode==prev_pressed_keycode) {
+                        // same key was pressed
+                        int interval_min;
+                        // KEY_INTERVAL_MIN_MS > KEY_INTERVAL_SEQ_MIN_MS
+                        // 最初は長めに待つ
+                        if(cnt_same_key_pressed <= 1){
+                            interval_min = KEY_INTERVAL_MIN_MS;
+                        } else {
+                            interval_min = KEY_INTERVAL_SEQ_MIN_MS;
+                        }
+
+                        // interval_min より長い時間が経過していたらkey inputを受け入れる
+                        if(cur_t - last_pressed_t > interval_min) {
+                            ret = bleKeyboard.write_raw(keycode);
+                            cnt_same_key_pressed += 1;
+                            last_pressed_t = cur_t;
+                            normal_key_was_pressed = 1;
+                            prev_pressed_keycode = keycode;
+                            Serial.println("same key pressed.");
+                        }
+                        return;
+                    } else {
+                        // different key was pressed
+                        ret = bleKeyboard.write_raw(keycode);
+                        cnt_same_key_pressed = 1;
+                        last_pressed_t = cur_t;
+                        normal_key_was_pressed = 1;
+                        prev_pressed_keycode = keycode;
+                        Serial.println("diff key pressed.");
+                        return;
+                    }
+                    //sprintf(buf, "post: %d, %d, %d, %d",
+                    //    keycode, 
+                    //    prev_pressed_keycode, 
+                    //    cnt_same_key_pressed,
+                    //    cur_t - last_pressed_t );
+                    //Serial.println(buf);
+                    if(normal_key_was_pressed) {
+                        return;
                     }
                 }
-            } // c
-            i2c_digitalWrite(r, HIGH);
-        } // r
-    }
+            } else {
+                if(is_modifier(keycode)) {
+                    bleKeyboard.release_raw(keycode);
+                }
+            }
+
+        } // c
+        i2c_digitalWrite(r, HIGH);
+    } // r
 }
 
 // find i2c device

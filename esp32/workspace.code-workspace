@@ -14,7 +14,8 @@
 			"xstring": "cpp",
 			"xtree": "cpp",
 			"xutility": "cpp",
-			"ostream": "cpp"
+			"ostream": "cpp",
+			"queue": "cpp"
 		}
 	}
 }
