@@ -401,6 +401,13 @@ void loop_I2C_read(void)
         } // c
         i2c_digitalWrite(r, HIGH);
     } // r
+
+    //何もキー入力されなかったら
+    if(!normal_key_was_pressed) {
+        cnt_same_key_pressed = 0;
+        prev_pressed_keycode = 0;
+        return;
+    }
 }
 
 // find i2c device
