@@ -3,11 +3,19 @@
       1. loop row, col
       2. r,c -> keymaps[][r][c] -> qmk keycode -> blekb keycode
 
+    deep sleep mode
+      1. if any key does not be typed in 10min, enable deep sleep mode.
+      2. wake up every 5sec, do setup(), loop()(check key matrix).
+      3. if any key was typed, disable deep sleeo mode, else wait next wake up to sleep.
 
 */
 #include <stdint.h>
 
-#include <M5Stack.h>
+//#include <M5Stack.h>
+#include <M5Atom.h>
+#include "esp_deep_sleep.h"
+#include "esp_bt.h"
+#include "esp_bt_main.h"
 
 // keyboard
 #include "keysw.h"
@@ -30,13 +38,112 @@
 #define IS_ATOM_ECHO            2
 #define BOARD   IS_ATOM_ECHO
 
-BleKeyboardJP bleKeyboard("skb81");
+BleKeyboardJP bleKeyboard("skb81"); // magma80
 extern int col_pins[];
 extern int row_pins[];
 extern const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS];
 char buf[128];
 
- //http://kats-eye.net/info/2018/11/07/mcp23017-esp/
+#define KEY_QUEUE_LEN   32
+static char g_key_queue[KEY_QUEUE_LEN] = {-1}; // hold latest KEY_QUEUE_LEN key input when ble is not connected.
+static int g_key_queue_cnt = 0;
+
+#define M5ATOM_LED__GREEN 0xf00000
+#define M5ATOM_LED__RED   0x00f000
+#define M5ATOM_LED__BLUE  0x0000f0
+#define M5ATOM_LED__WHITE 0x707070
+
+/* for deep sleep */
+#define uS_TO_S_FACTOR 1000000ULL  /* Conversion factor for micro seconds to seconds */
+#define TIME_TO_SLEEP  5        /* Time ESP32 will go to sleep (in seconds) */
+#define TIME_TO_SWITCH_TO_DEEPSLEEP_MS (30*1000)  /* 30sec. milli seconds */
+
+RTC_DATA_ATTR int bootCount = 0;
+bool is_wakeuped_loop = true;
+
+/****************************************************************************/
+/*
+Method to print the reason by which ESP32
+has been awaken from sleep
+*/
+void print_wakeup_reason(){
+  esp_sleep_wakeup_cause_t wakeup_reason;
+
+  wakeup_reason = esp_sleep_get_wakeup_cause();
+
+  switch(wakeup_reason)
+  {
+    case ESP_SLEEP_WAKEUP_EXT0:
+        Serial.println("Wakeup caused by external signal using RTC_IO");
+        break;
+    case ESP_SLEEP_WAKEUP_EXT1:
+        Serial.println("Wakeup caused by external signal using RTC_CNTL");
+        break;
+    case ESP_SLEEP_WAKEUP_TIMER:
+        Serial.println("Wakeup caused by timer");
+        break;
+    case ESP_SLEEP_WAKEUP_TOUCHPAD:
+        Serial.println("Wakeup caused by touchpad");
+        break;
+    case ESP_SLEEP_WAKEUP_ULP:
+        Serial.println("Wakeup caused by ULP program");
+        break;
+    default:
+        Serial.printf("Wakeup was not caused by deep sleep: %d\n",wakeup_reason);
+        break;
+  }
+}
+
+void setup_deep_sleep(){
+  //Increment boot number and print it every reboot
+  ++bootCount;
+  Serial.println("Boot number: " + String(bootCount));
+
+  //Print the wakeup reason for ESP32
+  print_wakeup_reason();
+
+  /*
+  First we configure the wake up source
+  We set our ESP32 to wake up every 5 seconds
+  */
+  /*
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+  Serial.println("Setup ESP32 to sleep for every " + String(TIME_TO_SLEEP) +
+  " Seconds");
+  */
+
+  /*
+  Next we decide what all peripherals to shut down/keep on
+  By default, ESP32 will automatically power down the peripherals
+  not needed by the wakeup source, but if you want to be a poweruser
+  this is for you. Read in detail at the API docs
+  http://esp-idf.readthedocs.io/en/latest/api-reference/system/deep_sleep.html
+  Left the line commented as an example of how to configure peripherals.
+  The line below turns off all RTC peripherals in deep sleep.
+  */
+  //esp_deep_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_OFF);
+  //esp_deep_sleep_pd_config(ESP_PD_DOMAIN_RTC_SLOW_MEM, ESP_PD_OPTION_OFF);
+  //esp_deep_sleep_pd_config(ESP_PD_DOMAIN_RTC_FAST_MEM, ESP_PD_OPTION_OFF);
+  //esp_deep_sleep_pd_config(ESP_PD_DOMAIN_MAX, ESP_PD_OPTION_OFF);
+  Serial.println("Configured all RTC Peripherals to be powered down in sleep");
+
+  /*
+  Now that we have setup a wake cause and if needed setup the
+  peripherals state in deep sleep, we can now start going to
+  deep sleep.
+  In the case that no wake up sources were provided but deep
+  sleep was started, it will sleep forever unless hardware
+  reset occurs.
+  */
+  /*
+  Serial.println("Going to sleep now");
+  Serial.flush(); 
+  esp_deep_sleep_start();
+  Serial.println("This will never be printed");
+  */
+}
+
+//http://kats-eye.net/info/2018/11/07/mcp23017-esp/
 void i2c_write_reg(byte dvc_adrs, uint8_t reg, uint8_t value)
 {
     //Serial.println("ic2_write_reg()");
@@ -134,9 +241,27 @@ void print_keymap(void)
     }
 }
 
+void connect_ble() {
+    // wait for connection
+    while(!bleKeyboard.isConnected()) {
+        Serial.println("waiting for connecting to BLE.");
+        delay(1000);
+    }
+    Serial.println("successfully connecting to BLE.");
+
+}
+
 //
 void setup(void)
 {
+    M5.begin(true, true, true); /* serial, i2c, display */
+    delay(50);
+    M5.dis.drawpix(0, M5ATOM_LED__RED);
+    delay(50);
+    M5.update();
+
+    Serial.begin(115200);
+    delay(1000); //Take some time to open up the Serial Monitor
 
 #if DOES_USE_I2C==0
     int r, c;
@@ -202,25 +327,25 @@ void setup(void)
 
 #endif /* DOES_USE_I2C */
 
+    print_keymap();
+
     // serial for debug
     Serial.begin(115200);
     Serial.println("start serial.");
-    print_keymap();
-
-    // ble
-    bleKeyboard.begin();
-    Serial.println(bleKeyboard.isConnected());
-    bleKeyboard.releaseAll();
 
     // check
+    Serial.println("check I2C device");
     loop_find_I2C_device();
 
-    //
-    while(!bleKeyboard.isConnected()) {
-        Serial.println("waiting for connecting to BLE.");
-        delay(1000);
-    }
-    Serial.println("successfully connecting to BLE.");
+    // setup ble
+    Serial.println("setup ble");
+    bleKeyboard.begin();
+    bleKeyboard.releaseAll();
+
+    //setup_deep_sleep();
+    is_wakeuped_loop = true;
+    
+    Serial.println("complete setup()");
 }
 
 bool is_ascii(const uint16_t keycode)
@@ -244,9 +369,36 @@ bool is_modifier(const uint16_t keycode)
 
 void loop(void)
 {
+    bool was_key_pressed = loop_I2C_read();
+    static bool prior_is_blekb_connected = false;
+    bool cur_is_blekb_connected;
+
+    cur_is_blekb_connected = bleKeyboard.isConnected();
+    if(!cur_is_blekb_connected) {
+        Serial.println("waiting for connecting to BLE.");
+    } else {
+        if(!prior_is_blekb_connected) {
+            Serial.println("successfully connecting to BLE.");
+            // set LED blue
+            M5.dis.drawpix(0, M5ATOM_LED__BLUE);
+            delay(50);
+            M5.update();
+
+            // flush key queue buffer
+            int i;
+            for(i=0; i < KEY_QUEUE_LEN; i++) {
+                if(g_key_queue[i] >= 0) {
+                    bleKeyboard.write_raw(g_key_queue[i]);
+                }
+            }
+        }
+    }
+    prior_is_blekb_connected = cur_is_blekb_connected;
+
+    is_wakeuped_loop = false;
+
     //loop_test_keycode();
     //loop_parallel();
-    loop_I2C_read();
     //loop_find_I2C_device();
     //loop_test_I2C();
 }
@@ -315,10 +467,60 @@ void loop_parallel(void)
     }
 }
 
-void loop_I2C_read(void) 
+void switch_to_deep_sleep(void)
 {
-    if (! bleKeyboard.isConnected())
-        return;
+    // led off
+    M5.dis.drawpix(0, 0);
+    delay(50);
+    M5.update();
+
+    // disable BLE
+    esp_bluedroid_disable();
+    esp_bt_controller_disable();
+
+    // set timer
+    esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+    Serial.println("switch_to_deep_sleep"); 
+    Serial.flush(); 
+    esp_deep_sleep_start();
+
+    // because start from setup() when wakeup.
+    Serial.println("This will never be printed");
+}
+
+size_t blekb_press_raw_wrap(uint8_t keycode)
+{
+    if(bleKeyboard.isConnected()) {
+        return bleKeyboard.press_raw(keycode);
+    } else {
+        // does not do buffering for mod key
+        //g_key_queue[g_key_queue_cnt++] = keycode;
+        ////g_key_queue_cnt %= KEY_QUEUE_LEN;
+        return 0;
+    }
+}
+
+size_t blekb_write_raw_wrap(uint8_t keycode)
+{
+    if(bleKeyboard.isConnected()) {
+        return bleKeyboard.write_raw(keycode);
+    } else {
+        Serial.println("buffering key input.");
+        g_key_queue[g_key_queue_cnt++] = keycode;
+        g_key_queue_cnt %= KEY_QUEUE_LEN;
+        return 0;
+    }
+}
+
+/**
+  @return true: some normal key was pressed.
+*/
+bool loop_I2C_read(void) 
+{
+    //if (! bleKeyboard.isConnected()) {
+    //    // setup()でcheckしているので通らないはず
+    //    return;
+    //}
 
     static uint16_t prev_pressed_keycode = 0;
     static uint32_t last_pressed_t = millis();
@@ -333,6 +535,8 @@ void loop_I2C_read(void)
     //    prev_pressed_keycode = 0;
     //}
 
+    Serial.println("start keyscan.");
+
     for (r = 0; r < MATRIX_ROWS; r++) { // output
         i2c_digitalWrite(r, LOW);
         for (c = 0; c < MATRIX_COLS; c++) { // input
@@ -343,7 +547,7 @@ void loop_I2C_read(void)
 
             if (0 == sw_val) { // sw is pushed
                 if(is_modifier(keycode)) {
-                    ret = bleKeyboard.press_raw(keycode);
+                    ret = blekb_press_raw_wrap(keycode);
                 } else {
                     sprintf(buf, "pre : %d, %d, %d, %d",
                         keycode, 
@@ -364,23 +568,23 @@ void loop_I2C_read(void)
 
                         // interval_min より長い時間が経過していたらkey inputを受け入れる
                         if(cur_t - last_pressed_t > interval_min) {
-                            ret = bleKeyboard.write_raw(keycode);
+                            ret = blekb_write_raw_wrap(keycode);
                             cnt_same_key_pressed += 1;
                             last_pressed_t = cur_t;
                             normal_key_was_pressed = 1;
                             prev_pressed_keycode = keycode;
                             Serial.println("same key pressed.");
                         }
-                        return;
+                        return true;
                     } else {
                         // different key was pressed
-                        ret = bleKeyboard.write_raw(keycode);
+                        ret = blekb_write_raw_wrap(keycode);
                         cnt_same_key_pressed = 1;
                         last_pressed_t = cur_t;
                         normal_key_was_pressed = 1;
                         prev_pressed_keycode = keycode;
                         Serial.println("diff key pressed.");
-                        return;
+                        return true;
                     }
                     //sprintf(buf, "post: %d, %d, %d, %d",
                     //    keycode, 
@@ -389,7 +593,7 @@ void loop_I2C_read(void)
                     //    cur_t - last_pressed_t );
                     //Serial.println(buf);
                     if(normal_key_was_pressed) {
-                        return;
+                        return true;
                     }
                 }
             } else {
@@ -402,12 +606,29 @@ void loop_I2C_read(void)
         i2c_digitalWrite(r, HIGH);
     } // r
 
-    //何もキー入力されなかったら
+    Serial.println("end keyscan.");
+
     if(!normal_key_was_pressed) {
         cnt_same_key_pressed = 0;
         prev_pressed_keycode = 0;
-        return;
+
+#if 1
+        if(is_wakeuped_loop) {
+            switch_to_deep_sleep();
+        }
+
+        // and if any key was pressed for a moment.
+        // switch to deepsleep mode
+        Serial.print("cur_t - last_pressed_t [ms]: ");
+        Serial.println(cur_t - last_pressed_t);
+        if(cur_t - last_pressed_t > TIME_TO_SWITCH_TO_DEEPSLEEP_MS) {
+            switch_to_deep_sleep();
+        }
+#endif
+
     }
+
+    return false;
 }
 
 // find i2c device
@@ -450,7 +671,7 @@ void loop_find_I2C_device()
   else
     Serial.println("done\n");
 
-  delay(5000);           // wait 5 seconds for next scan
+  //delay(5000);           // wait 5 seconds for next scan
 }
 
 void loop_test_I2C(void)
