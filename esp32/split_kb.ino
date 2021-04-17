@@ -56,7 +56,7 @@ static int g_key_queue_cnt = 0;
 /* for deep sleep */
 #define uS_TO_S_FACTOR 1000000ULL  /* Conversion factor for micro seconds to seconds */
 #define TIME_TO_SLEEP  5        /* Time ESP32 will go to sleep (in seconds) */
-#define TIME_TO_SWITCH_TO_DEEPSLEEP_MS (30*1000)  /* 30sec. milli seconds */
+#define TIME_TO_SWITCH_TO_DEEPSLEEP_MS (15*60*1000)  /* milli seconds */
 
 RTC_DATA_ATTR int bootCount = 0;
 bool is_wakeuped_loop = true;
@@ -375,6 +375,9 @@ void loop(void)
 
     cur_is_blekb_connected = bleKeyboard.isConnected();
     if(!cur_is_blekb_connected) {
+        M5.dis.drawpix(0, M5ATOM_LED__RED);
+        delay(50);
+        M5.update();
         Serial.println("waiting for connecting to BLE.");
     } else {
         if(!prior_is_blekb_connected) {
@@ -492,10 +495,11 @@ size_t blekb_press_raw_wrap(uint8_t keycode)
 {
     if(bleKeyboard.isConnected()) {
         return bleKeyboard.press_raw(keycode);
+        //return 0;
     } else {
         // does not do buffering for mod key
-        //g_key_queue[g_key_queue_cnt++] = keycode;
-        ////g_key_queue_cnt %= KEY_QUEUE_LEN;
+        g_key_queue[g_key_queue_cnt++] = keycode;
+        g_key_queue_cnt %= KEY_QUEUE_LEN;
         return 0;
     }
 }
@@ -504,6 +508,7 @@ size_t blekb_write_raw_wrap(uint8_t keycode)
 {
     if(bleKeyboard.isConnected()) {
         return bleKeyboard.write_raw(keycode);
+        //return 0;
     } else {
         Serial.println("buffering key input.");
         g_key_queue[g_key_queue_cnt++] = keycode;
@@ -535,7 +540,7 @@ bool loop_I2C_read(void)
     //    prev_pressed_keycode = 0;
     //}
 
-    Serial.println("start keyscan.");
+    //Serial.println("start keyscan.");
 
     for (r = 0; r < MATRIX_ROWS; r++) { // output
         i2c_digitalWrite(r, LOW);
@@ -574,6 +579,8 @@ bool loop_I2C_read(void)
                             normal_key_was_pressed = 1;
                             prev_pressed_keycode = keycode;
                             Serial.println("same key pressed.");
+                        } else {
+                            Serial.println("same key pressed, but too short interval.");
                         }
                         return true;
                     } else {
@@ -619,8 +626,8 @@ bool loop_I2C_read(void)
 
         // and if any key was pressed for a moment.
         // switch to deepsleep mode
-        Serial.print("cur_t - last_pressed_t [ms]: ");
-        Serial.println(cur_t - last_pressed_t);
+        //Serial.print("cur_t - last_pressed_t [ms]: ");
+        //Serial.println(cur_t - last_pressed_t);
         if(cur_t - last_pressed_t > TIME_TO_SWITCH_TO_DEEPSLEEP_MS) {
             switch_to_deep_sleep();
         }
@@ -629,7 +636,7 @@ bool loop_I2C_read(void)
     }
 
     return false;
-}
+  }
 
 // find i2c device
 void loop_find_I2C_device()
